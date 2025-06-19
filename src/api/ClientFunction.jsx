@@ -76,7 +76,6 @@ const handleNormalRequest = async (
       },
     });
     const decryptedData = decryptData(response?.data?.data);
-    // console.log(decryptedData);
     return decryptedData;
   } catch (error) {
     const decryptedData = decryptData(error?.response?.data?.data);

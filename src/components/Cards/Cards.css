@@ -1,0 +1,1015 @@
+/*------------------------------------------- Banner Card CSS ---------------------------------------------------- */
+.banner_container {
+  background: url(../../assets/bgcard_layout.svg);
+  background-image: linear-gradient(90deg, #00ff512b 0%, #63636327 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  /* height: 250px; */
+  display: flex;
+  justify-content: space-between;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.im_container {
+  display: flex;
+  justify-content: space-around;
+  height: 250px;
+  /* width: 50%; */
+  gap: 2rem;
+  padding: 0 40px;
+}
+
+.im_2container {
+  /* display: flex; */
+  /* justify-content: center; */
+  height: 100%;
+
+  width: 100%;
+}
+
+.im_2container .im_2 {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+.im_container .im_3 {
+  height: 80%;
+  padding-top: 2rem;
+}
+
+.banner_details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  width: 80%;
+}
+
+.banner_details div {
+  background-color: #00000030;
+  border-radius: 0.5rem;
+  padding: 15px 20px;
+  text-align: center;
+  width: 100%;
+  margin: 10px;
+  font-weight: 700;
+}
+
+.banner_details h1 {
+  font-weight: 800;
+}
+
+.banner_details div h3 span {
+  color: var(--buttons-text-color);
+}
+
+.banner_details div p {
+  font-size: 0.8rem;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.banner_btn {
+  background-image: var(--buttons-bg-color);
+  outline: none;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  width: 60%;
+  padding: 0.8rem 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.1rem;
+  animation: blink 1.5s infinite;
+}
+
+/* Media Query */
+@media screen and (max-width: 990px) {
+  .banner_details div {
+    padding: 10px 18px;
+    width: 80%;
+  }
+
+  .banner_details h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner_details div h3 {
+    font-size: 0.7rem;
+    padding: 0.1rem;
+  }
+
+  .banner_details div h3 span {
+    color: var(--buttons-text-color);
+  }
+
+  .banner_details div p {
+    font-size: 0.6rem;
+  }
+
+  .banner_btn {
+    font-size: 0.7rem;
+    width: 60%;
+    padding: 0.6rem 0;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .im_container {
+    width: 100%;
+  }
+
+  .banner_details div {
+    padding: 10px 18px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .banner_container {
+    flex-direction: row-reverse;
+  }
+
+  .im_container .im_3 {
+    padding-top: 2rem;
+    display: none;
+  }
+
+  .banner_details {
+    position: absolute;
+    left: 20px;
+    width: 40%;
+  }
+
+  .banner_details div {
+    padding: 10px 18px;
+    width: 100%;
+  }
+
+  .banner_details h1 {
+    font-size: 1rem;
+  }
+
+  .banner_details div h3 {
+    font-size: 0.7rem;
+    padding: 0.1rem;
+  }
+
+  .banner_details div h3 span {
+    color: var(--buttons-text-color);
+  }
+
+  .banner_details div p {
+    font-size: 0.6rem;
+  }
+
+  .banner_btn {
+    font-size: 0.7rem;
+    width: 60%;
+    padding: 0.6rem 0;
+  }
+}
+
+/*--------------------------------------------------------------------- Sports Card CSS ---------------------------------------------------*/
+.sports_card_container {
+  margin-top: 1rem;
+  background-image: linear-gradient(90deg, #504f4f19 0%, #562e58 100%);
+  height: 320px;
+  display: flex;
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sports_card_container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sports-im {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sports-im img {
+
+  height: 20rem;
+}
+
+.sports_heading {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.sports_icon {
+  font-size: 2rem;
+  color: var(--buttons-text-color);
+}
+
+/* Sports Details */
+.sports_details {
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sports_details p {
+  margin: 0;
+}
+
+.sports_details strong {
+  color: var(--buttons-text-color);
+  font-weight: bold;
+}
+
+.sports-btn {
+  background-image: var(--buttons-bg-color);
+  outline: none;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+  width: 60%;
+  padding: 0.8rem 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 870px) {
+  .sports-btn {
+    font-size: .96rem;
+    padding: 0.3rem 0;
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sports_card_container {
+    height: auto;
+    border-radius: 6px;
+    padding: .8rem;
+  }
+
+  .sports_heading {
+    font-size: 1.5rem;
+  }
+
+  .sports_icon {
+    font-size: 1.8rem;
+  }
+
+  .sports_details {
+    font-size: 0.9rem;
+  }
+
+  .sports-im img {
+    width: 70%;
+    height: 100%;
+  }
+
+  .sports_details {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .sports-im {
+    display: none;
+  }
+}
+
+/* Sports Game Card CSS */
+.sports-card-container {
+  background: var(--header-bg-color);
+  padding: 10px 20px;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.sports-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgb(150, 149, 149);
+  font-weight: 600;
+}
+
+.sports-card-time {
+  color: rgb(150, 149, 149);
+  font-weight: 600;
+  padding: 5px 0px;
+}
+
+.sports-card-game-name p {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sports-card-game-odds-container {
+  padding: 10px 0px;
+}
+
+.sports-card-game-odds-container p {
+  color: rgb(150, 149, 149);
+  font-weight: 600;
+}
+
+.sports-card-game-odds {
+  display: flex;
+  gap: 4px;
+  padding: 0.4rem 0;
+}
+
+.sports-card-game-odds p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.4rem;
+  width: 100%;
+  background-color: #474c4d;
+}
+
+.sports-card-game-odds p span {
+  color: var(--text-color);
+  padding: 0rem 0.2rem;
+}
+
+.sports-card-game-odds-container .sports-card-game-dropdown {
+  display: flex;
+  align-items: center;
+  background-color: #474c4d;
+  border-radius: 0.5rem;
+}
+
+.sports-card-game-dropdown-icon {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.sports-card-game-container-odds-list p {
+  color: rgb(150, 149, 149);
+  font-weight: 700;
+}
+
+.sports-card-game-container-odds-list .sports-card-game-odds p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.4rem;
+  width: 100%;
+  background-color: #474c4d;
+}
+
+.sports-card-game-container-odds-list .sports-card-game-odds .sports-card-game-dropdown {
+  display: flex;
+  align-items: center;
+  background-color: #474c4d;
+  border-radius: 0.5rem;
+}
+
+.sports-card-game-dropdown-icon {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.sports-card-game-container-odds-list {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.sports-card-game-container-odds-list.open {
+  max-height: 200px;
+  /* Adjust according to the content height */
+  opacity: 1;
+}
+
+.sports-card-game-container-odds-list.closed {
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Game Details Odds Dropdown */
+.sports-details-odds-container p {
+  color: var(--text-color);
+  font-weight: 600;
+  display: flex;
+  font-size: .8rem;
+  align-items: center;
+  gap: 5px;
+  padding: 0px 10px;
+  margin: 0.2rem 0;
+}
+
+.sports-details-odds-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.sports-details-odds-container .sports-details-odds-dropdown .sports-details-odds-dropdown-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  /* color: rgb(150, 149, 149); */
+}
+
+.sports-details-odds-game-odds {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 035c1abf5deacde47c1ff2a5eb2fc7d735c2e039
+/* Default single-column layout */
+.sports-details-odds-game-odds.single-column {
+  flex-direction: column;
+}
+
+/* Two-column layout if runners > 2 */
+.sports-details-odds-game-odds.multi-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* Individual odds items */
+.odds-item {
+  position: relative;
+}
+
+/* Regular odds item */
+.sports-details-odds-game-odds p {
+  font-size: 0.8rem;
+  color: rgb(150, 149, 149);
+  cursor: pointer;
+  transition: 0.4s all;
+  background-color:var(--header-bg-color) ;
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.4rem;
+  margin-top: -0.1rem;
+}
+
+/* Active state */
+.sports-details-odds-game-odds p.active {
+  background-color: var(--buttons-text-color);
+  color: var(--header-bg-color);
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.sports-details-odds-game-odds p.active span {
+  color: var(--header-bg-color);
+}
+
+/* Locked odds styling */
+.sports-details-odds-game-odds p.locked {
+  background-color: #222;
+  /* Dark background */
+  color: #888;
+  /* Grey text */
+  cursor: not-allowed;
+  /* Disable click */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Lock icon */
+.lock-icon {
+  font-size: 1rem;
+  color: #bbb;
+}
+
+
+
+
+
+
+
+
+
+
+/* GameOddsDetailsCard CSS */
+
+.sports-card-game-name-Odds-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+  margin-top: 1rem;
+}
+
+.sports-card-game-name-Odds-page p {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sports-card-game-name-Odds-page-icon {
+  font-size: 1.5rem;
+}
+
+.sports-card-game-name-Odds-page span {
+  font-weight: 600;
+  padding: 0px 0px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sports-card-game-name-Odds-page-heading {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgb(150, 149, 149);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+
+.sports-card-game-name-Odds-page-heading:hover {
+  color: var(--text-color);
+}
+
+/* -----------------------Live Sports Cards -------------------------------------------- */
+.livesports-container {
+  margin-top: 1rem;
+}
+
+.livesports-container h5 {
+  padding: 0 0rem;
+  font-size: 1rem;
+}
+
+
+.livesports-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0rem;
+}
+.livesports-header h5{
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.livesports-header h5 svg{
+  font-size: 20px;
+}
+
+.carousal-navigators p {
+  background-color: var(--header-bg-color);
+  font-weight: 700;
+  padding: 0.4rem 0.4rem;
+  border-radius: 0.4rem;
+  display: flex;
+  font-size: 0.8rem;
+  align-items: center;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+}
+
+.sportslive-btn {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  background-color: #324940;
+  color: var(--buttons-text-color);
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.4rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+}
+
+.sportslive-btn-upcoming {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  background-color: #493232;
+  color: rgba(248, 61, 9, 0.813)a(255, 55, 0, 0.813);
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.4rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+}
+
+.livesports-card-container {
+  background: var(--header-bg-color);
+  padding: 10px 20px;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.livesports-card-game-name-Odds-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  margin-top: 0rem;
+}
+
+.livesports-card-game-name-Odds-page p {
+  font-weight: 600;
+  font-size: .8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.livesports-card-game-name-Odds-page .teamname-sports{
+  width: 30%;
+}
+
+.livesports-card-game-name-Odds-page-icon {
+  font-size: 1.5rem;
+}
+
+.livesports-card-game-name-Odds-page span {
+  font-weight: 600;
+  padding: 0px 0px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.livesports-card-game-name-Odds-page-heading {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s all;
+  font-size: 0.7rem;
+}
+
+.livesports-card-game-name-Odds-page-heading span {
+  font-size: .7rem;
+  color: rgb(184, 184, 184);
+}
+
+.livesports-card-game-name-Odds-page-heading:hover {
+  color: var(--text-color);
+}
+
+.live-sports-fields {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 1rem; */
+  /* margin-top: 5rem; */
+}
+
+.live-sports-fields p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.4rem;
+  font-weight: 600;
+}
+
+.livesports-container {
+  margin-top: 1rem;
+}
+
+.livesports-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0.5rem;
+  gap: 18px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.livesports-header h5 {
+  padding-bottom: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+}
+
+.livesports-header h5.active-tab-type{
+  color: #30ED86;
+}
+
+
+.livesports-header .underline {
+  position: absolute;
+  bottom: -3px;
+  height: 2px;
+  background-color: #30ED86;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.carousal-navigators {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--header-bg-color);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.5s ease;
+}
+
+.nav-arrow.disabled {
+  background: grey;
+  cursor: not-allowed;
+}
+
+.livesports-slider {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0rem 0rem;
+ 
+}
+.livesports-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.cardloading {
+  width: 100%;
+  height: 31vh;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  align-items: center;
+  border-radius: 4px;
+}
+
+/* Skeleton Loading Effect */
+.cardloading .cardelement {
+  height: 100%;
+  width: 49%;
+  border-radius: 12px;
+  gap: 5px;
+  background-color: var(--header-bg-color);
+  position: relative;
+  overflow: hidden;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.3) 20%,
+        rgba(255, 255, 255, 0.1) 40%,
+        rgba(255, 255, 255, 0.1) 100%);
+    background-size: 200% 100%;
+    background-position: -100% 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.datanotfound {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--header-bg-color);
+  flex-direction: column;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+.datanotfound img {
+  height: 120px;
+}
+
+.datanotfound p {
+  font-size: 13px;
+  padding: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 1400px) {
+
+  .datanotfound {
+    height:53vh;
+  }
+}
+
+@media (max-width: 1200px) {
+  .datanotfound {
+    height: 45vh;
+  }
+}
+
+@media (max-width: 750px) {
+  .cardloading .cardelement.phonehideload {
+    display: none;
+  }
+
+  .cardloading .cardelement {
+    width: 98%;
+  }
+
+  .datanotfound {
+    height: 30vh;
+  }
+}
+@media (max-width:500px) {
+  .sports-details-odds-game-odds.multi-column {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+}
+
+
+
+.livesports-card-container {
+  background: var(--header-bg-color);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32.5%;
+  height: 190px;
+
+}
+
+.live-sports-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: .4rem;
+}
+
+.live-sports-fields p.active {
+  background-color: var(--buttons-text-color);
+  /* Highlight background color */
+  color: var(--header-bg-color);
+  /* Highlight text color */
+  font-weight: bold;
+  /* Makes the text stand out */
+  transition: 0.3s ease;
+}
+
+@media screen and (max-width: 550px) {
+  .livesports-card-game-name-Odds-page p {
+    font-size: 0.7rem;
+  }
+
+  .livesports-card-game-name-Odds-page-icon {
+    font-size: 1.5rem;
+  }
+
+  .livesports-card-game-name-Odds-page span {
+    font-size: 0.7rem;
+  }
+
+  .livesports-card-game-name-Odds-page-heading {
+    font-size: 0.7rem;
+  }
+
+  .livesports-card-game-name-Odds-page-heading span {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .livesports-card-game-name-Odds-page p {
+    font-size: 0.7rem;
+  }
+
+  .livesports-card-game-name-Odds-page-icon {
+    font-size: 1.5rem;
+  }
+
+  .livesports-card-game-name-Odds-page span {
+    font-size: 0.8rem;
+  }
+
+  .livesports-card-game-name-Odds-page-heading {
+    font-size: 0.7rem;
+  }
+
+  .livesports-card-game-name-Odds-page-heading span {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 1220px) {
+  .livesports-card-container {
+    width: 32%;
+  }
+  
+}
+@media (max-width: 1070px) {
+  .livesports-card-container {
+    width: 49%;
+  }
+}
+@media (max-width: 670px) {
+  .livesports-card-container {
+    width: 100%;
+  }
+}
+
+
+/* Skeleton Base Style */
+.skeleton {
+  background: linear-gradient(90deg, #131b29 25%,  #222530 75%);
+  animation: shimmer 2.5s infinite ease-in-out;
+ 
+}
+.skeleton-text{
+  background-size: 200% 100%;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+

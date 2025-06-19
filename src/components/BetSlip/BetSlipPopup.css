@@ -1,0 +1,80 @@
+/* .bet-slip-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .bet-slip-box {
+    width: 90%;
+    max-width: 400px;
+    background-color: var(--header-bg-color);
+    padding: 1.2rem 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  
+  .bet-slip-box.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+ 
+  @media screen and (max-width: 768px) {
+    .bet-slip-backdrop {
+      display: flex;
+    }
+    
+    .bet-slip-box {
+      width: 90%;
+      height: auto;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+  
+    .bet-slip-header p {
+      font-size: 1rem;
+    }
+  
+    .bet-slip-tab {
+      font-size: 0.9rem;
+    }
+  
+    .bet-slip-card p {
+      font-size: 0.8rem;
+    }
+  
+    .bet-slip-amount h5 {
+      font-size: 1rem;
+    }
+  
+    .bet-price-set p {
+      font-size: 0.9rem;
+    }
+  
+    .bet-slip-make-bet button {
+      font-size: 1rem;
+    }
+  
+    .odds-settings-btn {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media screen and (min-width: 769px) {
+    .bet-slip-backdrop {
+      display: none;
+    }
+  }
+   */

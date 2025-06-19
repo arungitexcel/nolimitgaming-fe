@@ -1,0 +1,115 @@
+.winner-container {
+    padding: 1px;
+    border-radius: 5px;
+    
+    font-family: Arial, sans-serif;
+  }
+  
+  .winner-header {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+  }
+  
+  .arrow {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  
+  .winner-options {
+    display: flex;
+    gap: 6px;
+    justify-content: space-between;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .winner-options.winnerwrap {
+    flex-wrap: wrap;
+  }
+  .team-option.teamwrap {
+    min-width: 30%;
+  }
+  .team-option {
+    background-color: #363f4d75;
+    color: rgb(214, 210, 210);
+    border-radius: 4px;
+    flex: 1;
+    padding: 5px;
+    margin: 2px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .team-option.active{
+    background-color: var(--buttons-text-color);
+    color: white;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  
+  .team-option .team-name {
+    margin-left: 10px;
+  }
+  
+  .team-option .teamodds {
+    margin-right: 10px;
+  }
+  .lock-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .lock-box svg {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  @media (max-width: 768px) {
+    .team-option {
+      width: 100%;
+      flex: auto;
+    }
+    .team-option.teamwrap {
+      min-width: 100%;
+    }
+    .winner-container{
+      padding: 3px;
+      border-radius: 2px;
+    
+    }
+  }
+  @media (max-width: 500px) {
+    .winner-options {
+        flex-wrap: wrap;
+    }
+  }
+  
+
+  
+@keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: 200px 0;
+    }
+  }
+  
+  .skeleton-text {
+    background: linear-gradient(90deg, #292e3d 25%, #343a4a 50%, #292e3d 75%);
+    background-size: 400% 100%;
+    animation: shimmer 1.5s infinite ease-in-out;
+    border-radius: 4px;
+  }
+  
+  .skeleton-icon {
+    background: linear-gradient(90deg, #292e3d 25%, #343a4a 50%, #292e3d 75%);
+    background-size: 400% 100%;
+    animation: shimmer 1.5s infinite ease-in-out;
+    border-radius: 50%;
+  }
+  
+  

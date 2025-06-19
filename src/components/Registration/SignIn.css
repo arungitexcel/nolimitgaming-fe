@@ -1,0 +1,272 @@
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.SignIn-overlay {
+  top: 0;
+  border-bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.545);
+  /* Dimmed background for the overlay */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.SignIn-container {
+  display: flex;
+  height: 650px;
+  width: 70%;
+  background: var(--background-color);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  animation: scaleIn 0.4s ease-in-out;
+}
+
+.SignIn-section-first {
+  position: relative;
+  width: 55%;
+}
+
+.auth-bg1 {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+.ads-details {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-color);
+  width: 100%;
+  text-align: center;
+}
+
+.ads-details h1 {
+  font-weight: 800;
+  font-size: 2.2rem;
+}
+
+.ads-details p {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.SignIn-section-second {
+  width: 50%;
+  padding: 1rem 1.5rem;
+}
+
+.SignIn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.SignIn-header h2 {
+  font-size: 1.2rem;
+}
+
+.cancel-icon {
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1rem;
+  background-color: #323738;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  border-radius: 4px;
+}
+
+.SignIn-form .form-group {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid gray;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  /* margin-top: 1rem; */
+
+}
+
+.form-groups input {
+  border: 1px solid gray;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 65%;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 0.7rem;
+  padding-top: 0.4rem;
+}
+
+.SignIn-btn {
+  width: 100%;
+  background-image: var(--buttons-bg-color);
+  color: #000;
+  font-weight: 700;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1.4rem;
+}
+
+.SignIn-with-options {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.SignIn-with-options-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.pass-icon {
+  color: gray;
+}
+
+.forgot-password {
+  text-align: end;
+  cursor: pointer;
+}
+
+.already-account {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.already-account span {
+  color: rgb(36, 238, 137);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sigin-creat-account {
+  margin-top: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sigin-creat-account span {
+  color: rgb(36, 238, 137);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .SignIn-overlay {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  .SignIn-section-first {
+    display: none;
+  }
+
+  .SignIn-container {
+    width: 90%;
+    max-height: 450px;
+    border-radius: .4rem;
+  }
+
+  .SignIn-section-second {
+    width: 100%;
+  }
+}
+
+.ForgotPassword {
+  width: 100%;
+  height: 400px;
+
+}
+
+.ForgotPassword h4 {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  gap: 10px;
+  margin-bottom: .8rem;
+}
+
+.forgo-pass-input-field {
+  width: 100%;
+  padding: 14px 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+}
+
+.fogo-btn {
+  width: 100%;
+  padding: 14px 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-image: var(--buttons-bg-color);
+}
+
+.OtpVerification {
+  margin-top: 1rem;
+}
+
+.OtpVerification h3 {
+  padding: 10px 0;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}

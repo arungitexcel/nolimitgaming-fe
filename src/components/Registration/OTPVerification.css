@@ -1,0 +1,122 @@
+/* /* Overlay background */
+.otp-verification-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.otp-box {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 20px;
+    border-radius: 0.4rem;
+}
+
+/* Modal box */
+.otp-form {
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Heading */
+.otp-verification-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input field */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #17234e;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Error message */
+.error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Submit button */
+.form-submit {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: var(--text-color-primary);
+    background-color: var(--secondary-bg-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.form-submit:hover {
+    background-color: #0056b3;
+}
+
+.form-submit:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.timer-section {
+    margin-bottom: .5rem;
+}
+
+.resend-button {
+    padding: .4rem .8rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color-primary);
+    border-radius: .2rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.timer-text {
+    font-size: .8rem;
+    color: red;
+    font-weight: 500;
+}

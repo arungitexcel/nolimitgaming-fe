@@ -1,0 +1,255 @@
+.coming_soon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--buttons-text-color);
+  animation: blink-effect 1.5s infinite; /* Adjust duration for blink speed */
+}
+
+@keyframes blink-effect {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0; /* Fully transparent at midpoint */
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  /* height: 70px; */
+  background-color: var(--header-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  gap: 1.2rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.101);
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.header_icon {
+  font-size: 1.5rem;
+  background-color: #3d4445;
+  border-radius: 8px;
+  padding: 10px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.header_icon span {
+  position: absolute;
+  font-size: 0.4rem;
+  color: #4bec82;
+}
+
+.header_logo {
+  display: flex;
+  align-items: center;
+}
+
+.header_logo img {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.header_logo .logo-heading {
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.header_btns {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 0.8rem;
+  padding-right: 1.2rem;
+}
+
+.header-signup-btn {
+  color: #000;
+  background-image: var(--buttons-bg-color);
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 100px;
+  cursor: pointer;
+}
+.header-desc-btn{
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid rgba(128, 128, 128, 0.503);
+  outline: none;
+  padding: 0.44rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  min-width: 200px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.header-login-btn {
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid rgba(128, 128, 128, 0.503);
+  outline: none;
+  padding: 5px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 90px;
+  cursor: pointer;
+}
+
+.header_btns p {
+  font-size: 1.2rem;
+  /* background-color: var(--header-bg-color); */
+  border-radius: 8px;
+  padding:  8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Media Query */
+@media (max-width:1000px) {
+   .coming_soon{
+    font-size: 1.2rem;
+   }
+}
+@media screen and (max-width: 900px){
+    .header {
+        background-color: var(--mobile-header-bg-color);
+        box-shadow: none;
+      }
+    
+      .header_logo .logo-heading {
+        display: none;
+      }
+    
+      .header_icon,
+      .header_btns .header-search-icon,
+      
+      .header_btns .header-language-icon {
+        display: none;
+      }
+}
+@media screen and (max-width: 700px) {
+  .header {
+    background-color: var(--mobile-header-bg-color);
+    box-shadow: none;
+  }
+  .header_logo .logo-heading {
+    display: none;
+  }
+  
+}
+
+@media screen and (max-width: 600px) {
+  .header-desc-btn{
+    min-width: 90px;
+    display: none;
+  }
+  .header-login-btn{
+    min-width: 90px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .header_logo .logo-heading {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .header {
+    gap: 0;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .header-signup-btn {
+    font-size: 0.8rem;
+  }
+
+  .header-login-btn {
+    font-size: 0.8rem;
+  }
+
+  .header_btns {
+    padding-right: 0.2rem;
+  }
+  .coming_soon {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .header {
+    gap: 0;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .header-signup-btn {
+    font-size: 0.7rem;
+  }
+  .header-signup-btn{
+    min-width: 60px;
+    padding: 3px;
+    border-radius: 4px;
+  }
+  .header-login-btn {
+    font-size: 0.7rem;
+  }
+  .header-login-btn{
+    border-radius: 4px;
+    min-width: 60px;
+     padding: 3px;
+  }
+
+  .header_btns {
+    padding-right: 0rem;
+  }
+  .coming_soon {
+    font-size: 1rem;
+  }
+ 
+  
+}
+@media screen and (max-width: 380px) {
+  .header {
+    gap: 0;
+    padding: 0.1rem 0.6rem;
+  }
+
+  .header-signup-btn {
+    font-size: 0.6rem;
+  }
+
+  .header-login-btn {
+    font-size: 0.6rem;
+  }
+
+  .header_btns {
+    padding-right: 0rem;
+  }
+  .coming_soon {
+    font-size: 0.8rem;
+  }
+  .header-container {
+    height: 60px !important;
+  }
+  
+}

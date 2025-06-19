@@ -1,0 +1,402 @@
+.history-container h2 {
+  color: white;
+  padding: 8px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.row-account-part {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0px 8px;
+  margin: 0 !important;
+}
+
+.date-picker {
+  display: flex;
+  width: 500px;
+}
+
+.rangePicker {
+  border-radius: 0px;
+  color: #ffff;
+  padding: 5px;
+  border: 1px solid #dbdbdb2b;
+  ;
+  outline: none;
+  gap: 0 5px;
+  height: 35px;
+  width: 100%;
+  background-color: var(--header-bg-color);
+}
+
+.rangePicker .ant-picker-suffix {
+  color: white;
+}
+
+.rangePicker:hover {
+  color: black;
+}
+
+.select-part {
+  width: 100%;
+  border-radius: 0px;
+  padding: 5px;
+  height: 35px;
+  outline: none;
+  margin-inline-start: 18px;
+}
+
+
+.column-second-statement {
+  display: flex;
+  align-items: center;
+}
+
+.select-part-second {
+  width: 50%;
+  border-radius: 0px;
+  padding: 5px;
+  height: 35px;
+  outline: none;
+  margin-inline-start: 10px;
+}
+
+.search-part {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.search-input-statement {
+  padding: 8px;
+  outline: none;
+}
+
+.search-part label {
+  margin-inline-end: 5px;
+  font-size: 17px;
+}
+
+/* Ant Design CSS Mainuplated Starts Here------------------*/
+.custom-table {
+  background-color: #06090d4a !important;
+  color: white !important;
+  margin: 0 8px;
+}
+
+.ant-select-selector {
+  background-color: #06090d !important;
+}
+
+.ant-select-selection-item {
+  color: #fff !important;
+}
+
+:where(.css-dev-only-do-not-override-cdzvx5).ant-table-wrapper .ant-table-container table>thead>tr:first-child>*:first-child {
+  border-start-start-radius: 4px !important;
+}
+
+.custom-table .ant-table-thead>tr>th {
+  background: #06090d !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 0.77rem;
+}
+
+.custom-table .ant-table-tbody>tr {
+  background: #0D131C !important;
+  color: white !important;
+  transition: background 0.3s ease-in-out;
+  font-size: 0.77rem;
+}
+
+.custom-table .ant-table-tbody>tr:hover {
+  background: #333 !important;
+}
+
+.custom-table .ant-table-tbody>tr:hover td {
+  color: white !important;
+}
+
+.custom-table .ant-pagination-item {
+  border-color: #444 !important;
+  color: white !important;
+}
+
+:where(.css-dev-only-do-not-override-cdzvx5).ant-table-wrapper .ant-table-tbody .ant-table-row>.ant-table-cell-row-hover {
+  background: #000000ae !important;
+}
+
+/* Ant Design CSS Mainuplated Ends Here ------------------*/
+.anticon {
+  color: white;
+}
+
+.select-sports {
+  width: 20%;
+  margin-inline-end: 5px;
+}
+
+.select-child-part-sports {
+  width: 100%;
+}
+
+.select-part-column {
+  margin-inline-start: 10px;
+}
+
+.row-part-second {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row-account-part select {
+  width: 30%;
+  outline: none;
+  margin-left: 14px;
+  height: 35px;
+  border: 1px solid #dbdbdb2b;
+  background-color: var(--background-color);
+}
+
+option {
+  background-color: var(--background-color);
+}
+
+/* .ant-table-content table{
+    min-height: 400px;
+} */
+
+.history-container {
+  margin-top: 8px;
+}
+
+@media (max-width: 1000px) {
+  .Account-Statement-btn {
+    width: 120px;
+    margin-inline-start: 20px;
+  }
+
+  .select-part {
+    width: 80%;
+    margin-inline-start: 0px;
+  }
+}
+
+@media (max-width: 990px) {
+  .btn-column {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row-account-part {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 8px;
+  }
+
+  .date-picker {
+    width: 100%;
+  }
+
+  .select-part-column {
+    margin-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .select-part {
+    width: 100%;
+    margin-inline-start: 0;
+  }
+
+  .Account-Statement-btn {
+    width: 100%;
+    margin-inline-start: 0;
+  }
+
+  .row-account-part select {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .row-account-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .row-account-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .row-part-second {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* .select-part {
+    width: 400px;
+  } */
+  .Account-Statement-btn {
+    width: 100%;
+  }
+
+  .account-statement-btn-column {
+    width: 100%;
+  }
+
+  .column-second-statement {
+    width: 50px;
+  }
+
+  .select-part-second {
+    width: 100%;
+  }
+
+  .search-part {
+    margin-top: 10px;
+  }
+
+  .select-sports {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-inline-start: 15px;
+  }
+}
+
+@media (max-width: 516px) {
+  /* .date-picker {
+    width: 400px;
+  } */
+
+  .bethistory-btn {
+    padding: 10px 20px;
+  }
+
+  .bethistory-btn-yesterday {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 412px) {
+  .account-statement-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* .date-picker {
+    width: 300px;
+  } */
+
+  /* .select-part {
+    width: 300px;
+  } */
+  .Account-Statement-btn {
+    width: 300px;
+  }
+
+  .custom-table .ant-table-thead>tr>th {
+    padding: 3px;
+  }
+
+  .bethistory-btn {
+    padding: 10px 14px;
+  }
+
+  .bethistory-btn-yesterday {
+    padding: 10px 15px;
+  }
+
+  .custom-table .ant-table-tbody>tr>td {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+
+  .search-type-part-betting {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+  }
+
+  .search-label {
+    display: none;
+  }
+
+  .search-part {
+    width: 100%;
+  }
+
+  .select-sports {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 0;
+    margin-inline-start: 0px;
+  }
+
+  .select-child-part-sports {
+    width: 100%;
+  }
+}
+
+@media (max-width: 331px) {
+  .bethistory-btn-parent {
+    flex-direction: column;
+  }
+
+  .bethistory-btn {
+    width: 98%;
+    margin-inline-start: 1px;
+    margin-top: 8px;
+  }
+
+  .bethistory-btn-yesterday {
+    width: 98%;
+    margin-inline-start: 1px;
+    margin-top: 8px;
+  }
+
+  /* .date-picker {
+    width: 290px;
+  } */
+
+  */ .Account-Statement-btn {
+    width: 290px;
+  }
+
+  .row-account-part {
+    padding: 0px 4px;
+  }
+}
+
+@media (max-width: 295px) {
+  /* .date-picker {
+    width: 250px;
+  } */
+
+  /* .select-part {
+    width: 250px;
+  } */
+  .Account-Statement-btn {
+    width: 250px;
+  }
+
+}
+
+:where(.css-dev-only-do-not-override-1x0dypw).ant-empty-normal .ant-empty-description {
+  color: white;
+}

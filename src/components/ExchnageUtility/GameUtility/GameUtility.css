@@ -1,0 +1,347 @@
+/* Games CSS */
+.game_exchange_odds_container {
+  margin-top: 1rem;
+  background-color: var(--header-bg-color);
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+}
+
+.exchange_page_container_header {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.team_container {
+  font-size: medium;
+}
+.market_card {
+  background-color: black;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.span_style {
+  background-color: black;
+  color: white;
+}
+
+.game_time {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.market_table {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background-color: black;
+}
+
+.table_row {
+  display: contents;
+  background-color: black;
+}
+
+.table_row span {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: black;
+  font-size: 14px;
+  text-align: center;
+}
+
+.header_row span {
+  font-weight: bold;
+  background-color: #e0e0e0;
+}
+
+.game_container {
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  cursor: pointer;
+
+  padding: 0.6rem 0.8rem;
+}
+
+.game_name_bet {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.game_name_bet p {
+  font-size: 0.8rem;
+}
+.game_name_bet p span {
+  font-size: 12px;
+}
+.game_name_bet_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 0px;
+  width: 55%;
+}
+
+.game_name_status {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.tvforPhone {
+  display: none;
+}
+
+.game_name_status p {
+  font-size: 14px;
+}
+
+.live {
+  font-weight: 700;
+  color: #51cf66;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: blink 1s infinite;
+  gap: 0.4rem;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.game_name_odds {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.game_name_odds div {
+  display: flex;
+  height: 50px;
+}
+
+.game_name_odds div p {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.game_name_odds-value p span {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.game_name_odds div p:nth-child(odd) {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 8px 0;
+  width: 80px;
+  background-color: #66d1ff;
+  color: #000;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.game_name_odds p:nth-child(even) {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 10px;
+  font-weight: 600;
+  width: 80px;
+  background-color: #ff7c99;
+  color: #000;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.game_status_live {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.4rem;
+  position: relative;
+  overflow: hidden;
+  font-weight: 600;
+  font-size: 0.8rem;
+  width: 150px;
+}
+
+.game_status_live::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0.4rem;
+  border: 2px solid transparent;
+  background: linear-gradient(
+    90deg,
+    #51cf66,
+    /* Light Green */ #40c057,
+    /* Medium Green */ #37b24e,
+    /* Darker Green */ #2f9e44,
+    /* Forest Green */ #1f7a1f /* Deep Green */
+  );
+  background-size: 200% 200%;
+  animation: linear-border-animation 4s linear infinite;
+  z-index: 1;
+  /* Keeps the border behind the content */
+}
+
+.game_status_live .status_text {
+  font-size: 0.6rem;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+@keyframes linear-border-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Responsive Styling */
+@media (max-width: 1250px) {
+  .game_name_odds p:nth-child(even) {
+    width: 60px;
+  }
+  .game_name_odds div p:nth-child(odd) {
+    width: 60px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .game_container {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.8rem 0.8rem;
+    width: 100%;
+  }
+  .tvforPc {
+    display: none;
+  }
+  .tvforPhone {
+    display: flex;
+  }
+
+  .game_name_bet_container {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.3rem;
+  }
+
+  .game_name_status {
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .game_name_odds {
+    width: 100%;
+  }
+
+  .game_name_odds div {
+    width: 100%;
+  }
+
+  .game_name_odds div p:nth-child(odd) {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 0;
+    width: 100%;
+    background-color: #66d1ff;
+    color: #000;
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .game_name_odds p:nth-child(even) {
+    text-align: center;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    background-color: #ff7c99;
+    color: #000;
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .game_status_live {
+    padding: 0.6rem 0.8rem;
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .game_name_odds div {
+    height: 45px;
+    padding: 0px;
+  }
+  .game_name_odds {
+    /* flex-direction: column; */
+  }
+
+  .game_container {
+    gap: 0.4rem;
+  }
+
+  .game_status_live {
+    padding: 0.3rem 0.4rem;
+  }
+  .game_name_odds-value p span {
+    font-size: 10px;
+  }
+  .game_name_odds div p:nth-child(odd) {
+    font-size: 12px;
+  }
+
+  .game_name_odds p:nth-child(even) {
+    font-size: 12px;
+  }
+
+  .game_container {
+    margin: 0rem 0;
+  }
+
+  .game_exchange_odds_container {
+    padding: 0rem 0rem;
+  }
+  .game_name_bet p {
+    font-size: 0.6rem;
+  }
+  .game_name_bet p span {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .game_name_odds-value p span {
+    font-size: 8px;
+  }
+}

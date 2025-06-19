@@ -1,0 +1,68 @@
+.gamelist-slider {
+  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gamelist-slider::-webkit-scrollbar {
+  height: 8px;
+  display: none;
+}
+
+.gamelist-slider::-webkit-scrollbar-thumb {
+  background: #24ee89;
+  border-radius: 10px;
+}
+
+.gamelist-slider ul {
+  display: flex;
+  gap: 0.8rem; /* Slightly smaller gap for small screens */
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.gamelist-slider ul li {
+  /* min-width: 100px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 1rem;
+  border: 1px solid #cccccc4b;
+  gap: 4px;
+  font-weight: 500;
+  font-size: .8rem; /* Slightly smaller text for better fit */
+  padding:0.2rem .7rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gamelist-slider ul li:hover {
+  border-color: none;
+  transition: 0.5s all;
+  background-color: #333;
+}
+
+.gamelist-slider ul li.active {
+  color: #000000;
+  background-image: var(--buttons-bg-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.gamelist-slider ul li.active .icons {
+  color: #000000;
+}
+
+.gamelist-slider ul li .icons {
+  padding-top: 0.2rem;
+  font-size: 0.9rem;
+  color: var(#333);
+  transition: color 0.3s ease;
+}
+ 

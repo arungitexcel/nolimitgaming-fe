@@ -1,0 +1,80 @@
+ * {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+ }
+
+ :root {
+   --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+   --line-height: 1.5;
+   --font-weight: 400;
+   --color-scheme: light dark;
+   --text-color: white;
+   --background-color: #0D131C;
+   --header-bg-color: #19212C;
+   --buttons-bg-color: linear-gradient(90deg,
+       rgb(36, 238, 137),
+       rgb(159, 232, 113));
+   --buttons-text-color: rgb(36, 238, 137);
+
+   --font-synthesis: none;
+   --text-rendering: optimizeLegibility;
+   --webkit-font-smoothing: antialiased;
+   --moz-osx-font-smoothing: grayscale;
+
+   /* Mobile Responsive from 630px */
+   --mobile-header-bg-color: #1f4734;
+ }
+
+ body {
+   font-family: var(--font-family);
+   line-height: var(--line-height);
+   font-weight: var(--font-weight);
+
+   color-scheme: var(--color-scheme);
+   color: var(--text-color);
+   background-color: var(--background-color);
+
+   font-synthesis: var(--font-synthesis);
+   text-rendering: var(--text-rendering);
+   -webkit-font-smoothing: var(--webkit-font-smoothing);
+   -moz-osx-font-smoothing: var(--moz-osx-font-smoothing);
+ }
+
+ p {
+   color: var(--text-color);
+ }
+
+
+ ::-webkit-scrollbar {
+   width: 5px;
+ }
+
+ ::-webkit-scrollbar-track {
+   background: #202020e5;
+ }
+
+ ::-webkit-scrollbar-thumb {
+   background: #3c3c3cde;
+ }
+
+ ::-webkit-scrollbar-thumb:hover {
+   background: #555;
+ }
+
+ /* Optional: Customize the scrollbar appearance for webkit browsers */
+ .content::-webkit-scrollbar {
+   width: 8px;
+ }
+
+ .content::-webkit-scrollbar-thumb {
+   background-color: rgba(0, 0, 0, 0.3);
+   border-radius: 10px;
+ }
+
+ .content::-webkit-scrollbar-track {
+   background: rgba(0, 0, 0, 0.1);
+ }

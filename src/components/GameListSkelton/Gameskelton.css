@@ -1,0 +1,57 @@
+.gamelist-slider {
+
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    
+  }
+  
+  
+  .skeleton-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    background-color: #333;
+    border-radius: 1rem;
+    width: 480px;
+    height: 30vh;
+    padding: 0.3rem 1rem;
+    position: relative;
+  }
+  
+  .skeleton-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+    animation: loading 1.5s infinite;
+  }
+  
+  @keyframes loading {
+    from {
+      left: -100%;
+    }
+    to {
+      left: 100%;
+    }
+  }
+  
+  .skeleton-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #555;
+    border-radius: 50%;
+  }
+  
+  .skeleton-text {
+    width: 60px;
+    height: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    margin-left: 5px;
+  }
+  

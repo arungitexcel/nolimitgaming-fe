@@ -1,0 +1,218 @@
+/* Styling the header navigation */
+.gameodds_details_header_items {
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 1px;
+}
+
+.gameodds_details_header_items ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.gameodds_details_header_items ul li {
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 6px 20px;
+  border-radius: 8rem;
+  color: gray;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.9rem;
+}
+
+.gameodds_details_header_items ul li span {
+  font-size: 0.7rem;
+  background-color: rgba(128, 128, 128, 0.115);
+  border-radius: 0.6rem;
+  padding: 0.1rem 0.5rem;
+  color: gray;
+}
+
+.gameodds_details_header_items ul li.active {
+  background-color: rgba(128, 128, 128, 0.225);
+  color: var(--text-color);
+}
+
+.gameodds_details_header_items ul li.active span {
+  background-color: rgba(128, 128, 128, 0.336);
+  color: #fff;
+  font-weight: bold;
+}
+
+.gameodds_details_header_items::-webkit-scrollbar {
+  display: none;
+}
+
+.gameodds_details_header_items {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* ODDS DROPDOWN */
+.odds_format_dropdown {
+  margin: 4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.odds_format_dropdown .odds-format-heading {
+  color: rgba(158, 158, 158, 0.773);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: 1px;
+}
+
+.odds_format_language-dropdown {
+  position: relative;
+  width: 200px;
+  font-size: .9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.lang {
+  font-size: .7rem;
+  letter-spacing: 1px;
+}
+
+.odds_format_dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  font-size: .8rem;
+  border-radius: 20px;
+  background-color: var(--header-bg-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.odds_format_dropdown-header:hover {
+  background-color: #e0e0e018;
+}
+
+.odds_format_dropdown-icon {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.odds_format_dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 5px;
+  background-color: var(--header-bg-color);
+  color: var(--text-color);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 150px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.odds_format_dropdown-menu::-webkit-scrollbar {
+  display: none;
+  /* For Chrome, Safari, and Opera */
+}
+
+.odds_format_dropdown-item {
+  font-size: .7rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.odds_format_dropdown-item:hover {
+  background-color: var(--background-color);
+  color: #fff;
+}
+
+.odds_format_dropdown-item.active {
+  background-color: rgba(128, 128, 128, 0.16);
+  color: #fff;
+  font-weight: bold;
+}
+
+.odds-format-desc {
+  text-align: center;
+  width: 50%;
+  font-weight: 600;
+  font-size: .8rem;
+  color: rgba(156, 155, 155, 0.826);
+}
+
+.gamename-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gamename {
+  font-size: .9rem;
+  background: var(--buttons-bg-color);
+  color: #000;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  margin-top: 1rem;
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.min-max {
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: .9rem;
+}
+
+@media (max-width: 650px) {
+  .gamename {
+    font-size: 0.8rem;
+  }
+
+  .min-max {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 510px) {
+  .gamename-header {
+    flex-wrap: wrap;
+  }
+
+  .gamename {
+    font-size: 0.8rem;
+  }
+
+  .min-max {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .gamename {
+    max-width: 100%;
+  }
+}

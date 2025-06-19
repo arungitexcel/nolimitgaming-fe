@@ -1,0 +1,178 @@
+/* General Layout Styling */
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header-container {
+  height: 70px;
+  /* position: fixed; */
+  width: 100%;
+  /* z-index: 1000; */
+  top: 0;
+}
+
+.layout-body {
+  display: flex;
+  height: calc(100vh - 70px);
+  /* margin-top: 70px; */
+  overflow: hidden;
+}
+
+/* Sidebar or IconBar */
+.sidebar-container {
+  transition: width 0.3s ease;
+  overflow-y: auto;
+  background-color: var(--sidebar-bg-color);
+}
+
+.sidebar-container.open {
+  width: 260px;
+}
+
+.sidebar-container.collapsed {
+  width: 80px;
+}
+
+/* Shared Scrollable Content */
+.content-container {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.content-container.sidebar-open {
+  margin-left: 254px;
+}
+
+.content-container.sidebar-collapsed {
+  margin-left: 60px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  background-color: var(--main-bg-color);
+  overflow: auto;
+}
+
+/* Bet Slip */
+.bet-slip {
+  width: 300px;
+  min-width: 300px;
+  /* Ensures fixed width */
+  max-width: 300px;
+  /* Ensures fixed width */
+  background-color: var(--bet-slip-bg-color);
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+/* Bottom Tab Bar */
+.bottom-tab-bar {
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--tab-bar-bg-color);
+}
+
+/* Homepage */
+.homePage_Sportsbook {
+  color: #fff;
+  padding: 14px 5px;
+  min-height: 80vh;
+}
+
+@media (min-width:1450px) {
+  .homePage_Sportsbook {
+    min-height: 78vh;
+  }
+}
+/* Responsive Styling */
+@media screen and (max-width: 1200px) {
+  .bet-slip {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .sidebar-container.open {
+    display: none;
+  }
+
+  .sidebar-container.collapsed {
+    display: none;
+  }
+
+  .content-container.sidebar-open {
+    margin-left: 0px;
+  }
+
+  .content-container.sidebar-collapsed {
+    margin-left: 0px;
+  }
+
+  .layout {
+    padding-bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-container.open {
+    width: 200px;
+  }
+  .homePage_Sportsbook{
+    min-height: 70vh;
+  }
+
+  /* .content-container.sidebar-open {
+    margin-left: 200px;
+  } */
+}
+
+@media screen and (max-width: 700px) {
+  /* .sidebar-container.open {
+    display: none;
+  }
+  .sidebar-container.collapsed {
+    display: none;
+  }
+  .content-container.sidebar-open {
+    margin-left: 0px;
+  }
+  .content-container.sidebar-collapsed {
+    margin-left: 0px;
+  }
+  .layout {
+    padding-bottom: 6rem;
+  } */
+  .layout {
+    padding-bottom: 4.5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .homePage_Sportsbook {
+    padding: 7px;
+  }
+}
+
+@media (max-width: 400px) {
+  .homePage_Sportsbook {
+    padding: 5px;
+  }
+}
+
+.responsive-sidebar-wrapper {
+  margin-top: 12rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* overflow-y: auto; */
+}

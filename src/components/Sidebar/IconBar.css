@@ -1,0 +1,67 @@
+.iconbar-container {
+  position: fixed;
+  background-color: var(--header-bg-color);
+  min-height: 100vh;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+/* Icon styling */
+.icon {
+  color: var(--text-color);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  color: rgb(36, 238, 137);
+}
+
+/* Dropdown Styling */
+.icon-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iconbar-dropdown {
+  background-color: var(--header-bg-color);
+  border-radius: 8px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+  z-index: 10; /* Ensure it appears above other elements */
+}
+
+.iconbar-dropdown li {
+  list-style: none;
+}
+
+.iconbar-dropdown .icon {
+  font-size: 1.1rem;
+  color: #fff;
+}
+.iconbar-dropdown li:hover{
+  transform: scale(1.2);
+  color: rgb(36, 238, 137);
+}
+
+/* Media Query */
+@media screen and (max-width: 630px) {
+  .iconbar-container {
+    display: none;
+  }
+}
+
+.icon-dropdown {
+  cursor: pointer;
+}

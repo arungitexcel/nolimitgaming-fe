@@ -1,0 +1,153 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  min-height: 100vh;
+  /* background: var(--header-bg-color); */
+  padding: 20px;
+  text-align: center;
+  color: white;
+      background: radial-gradient(50% 100% at 50% 0, #222846 0, #131922);
+}
+
+.container h3{
+  background-color: var(--header-bg-color);
+  width: 100%;
+  margin-top: 5px;
+  padding: 11px 12px;
+  font-size: 16px;
+  text-align: start;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.toprefer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.image {
+  width: 40%;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  /* background: var(--background-color); */
+  color: black;
+  padding: 16px;
+  border-radius: 15px;
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+  margin-top: 25px;
+  width: 90%;
+  text-align: center;
+}
+.card p{
+  text-align: start;
+  font-size: 15px;
+  margin-top: 12px;
+  font-weight: 400;
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.copy-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.481);
+  background-color: var(--header-bg-color);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.code-text {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.copy-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.copy-box .icon {
+  font-size: 20px;
+  color: #4a90e2;
+}
+
+.share-button {
+  background: var(--buttons-bg-color);
+  padding: 12px;
+  border-radius: 8px;
+  width: 80%;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+ 
+}
+
+.share-button:hover {
+  background:  #db2055;
+}
+
+.referPara {
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 400;
+  margin-top: 20px;
+}
+@media (max-width:650px) {
+  .toprefer{
+    flex-direction: column-reverse;
+  }
+}
+@media(max-width:510px){
+   .copy-box {
+  width: 100%;
+}
+.card{
+  width: 100%;
+  padding: 0px;
+}
+h1{
+  font-size: 2em;
+}
+.subtitle{
+  font-size: 1em;
+}
+
+.card{
+  margin-top: 0px;
+}
+} 
+
+@media (max-width:400px){
+  .code-text{
+    font-size: 12px;
+    overflow-X: hidden;
+  }
+}

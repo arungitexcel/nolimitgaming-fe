@@ -1,0 +1,485 @@
+.exchange-odds-details-container {
+  border-radius: 4px;
+  padding: 20px 15px;
+  /* width: 80%; */
+}
+
+.exchange_odds_container_box {
+  padding: 0.5rem 0;
+  background-color: transparent;
+  margin-top: 1rem;
+  border-radius: 0.4rem;
+}
+
+.exchange_match_odds {
+  padding: 0.4rem 0.4rem;
+}
+
+.exchange_odds_consider {
+  background-color: var(--header-bg-color);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.2rem 0.4rem;
+}
+
+.exchange_match_title {
+  padding: 0.4rem 0.4rem;
+  background-image: var(--buttons-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+}
+
+.exchange_match_header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.exchange_match_header p {
+  width: 22%;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.4rem 0;
+  text-align: center;
+}
+
+.exchange_match_game_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exchange_match_game_name {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  width: 25%;
+  font-size: 0.9rem;
+}
+
+.exchange_match_game_name_odds_container {
+  width: 65%;
+}
+
+.exchange_match_game_name_odds {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.exchange_match_game_name_odds p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.exchange_match_game_odds_type1 {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  margin-bottom: 0.4rem;
+  max-width: 200px;
+  width: 100%;
+}
+
+.exchange_match_game_odds_type1 p {
+  /* background-color: #57acd2; */
+  padding: 0.4rem 1rem;
+  border-radius: 0.4rem;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.exchange_match_game_odds_type1 p span {
+  font-size: 0.6rem;
+}
+
+.exchange_match_game_odds_type2 {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  margin-bottom: 0.4rem;
+  max-width: 200px;
+  width: 100%;
+}
+
+.exchange_match_game_odds_type2 p {
+  /* background-color: #57acd2; */
+  padding: 0.4rem 1rem;
+  border-radius: 0.4rem;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.exchange_match_game_odds_type2 p span {
+  font-size: 0.6rem;
+}
+
+.exchange_match_game_odds_type3 {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  margin-bottom: 0.4rem;
+  max-width: 200px;
+  width: 100%;
+}
+
+.exchange_match_game_odds_type3 p {
+  /* background-color: #57acd2; */
+  padding: 0.4rem 1rem;
+  border-radius: 0.4rem;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.exchange_match_game_odds_type3 p span {
+  font-size: 0.6rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .exchange-odds-details-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  /* .session-exchange_match_header{
+width: 40%;
+} */
+}
+
+@media screen and (max-width: 800px) {
+  .exchange-odds-details-container {
+    width: 100%;
+  }
+
+  .exchange_match_game_odds_type1 {
+    display: none;
+  }
+
+  .exchange_match_header p {
+    width: 16%;
+  }
+
+  .p3 {
+    display: none;
+  }
+
+  .exchange_match_game_odds_type3 {
+    display: none;
+  }
+  .exchange_match_game_name{
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .exchange_match_header p {
+    width: 16%;
+  }
+
+  .p3 {
+    display: none;
+  }
+
+  .exchange_match_title {
+    width: 25%;
+  }
+
+  .exchange_match_game_odds_type2 p {
+    font-size: 12px;
+  }
+
+  .truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .exchange_match_header p {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .exchange_match_header p {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .exchange_match_header p {
+    width: 24%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .exchange_match_title {
+    width: 35%;
+  }
+
+  .exchange_match_header p {
+    width: 28%;
+  }
+
+  .exchange_match_game_name p {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 410px) {
+
+  /* .exchange_match_game_odds_type2 p {
+    padding: 0.4rem 1.4rem;
+  } */
+  .exchange_match_game_odds_type2 {
+    max-width: 180px;
+    min-width: 140px;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .exchange_match_game_name p {
+    max-width: 100px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .exchange_match_game_name p {
+    max-width: 90px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .exchange_match_game_name p {
+    max-width: 70px;
+  }
+}
+
+/* Live TV */
+.live_tv_container {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.live_tv_header {
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+  margin-top: 0.4rem;
+  padding: 0.5rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.live_tv_header p {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blink-icon {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    /* Invisible */
+  }
+}
+
+.live_tv_header span {
+  font-size: 0.7rem;
+}
+
+.live_tv {
+  background-color: #4d4d4d;
+  border: 1px solid #0b0b0b;
+  border-radius: 0.2rem;
+  margin-top: 0.4rem;
+  transition: height 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LIVE MATCH SCOREBOARD */
+.live_match_scoreboard {
+  border: 1px solid gray;
+  margin-top: 0.5rem;
+  height: 200px;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.session-exchange_match_header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.session-exchange_match_header p {
+  width: 10%;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.4rem 0;
+  text-align: center;
+}
+
+.tabs {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  margin-top: 1rem;
+}
+
+.tabs button {
+  padding: 4px 20px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: var(--header-bg-color);
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+.tabs button.active {
+  border-bottom: 2px solid var(--secondary-bg-color);
+  color: var(--secondary-bg-color);
+  font-weight: 700;
+}
+
+.exchange_match_game_name_odds_container {
+  position: relative;
+}
+
+.exchange_match_game_name_odds.blur_bg {
+  filter: blur(5px);
+  border: 1px solid red;
+}
+
+.suspended-overlay {
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: red;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Semi-transparent overlay */
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .exchange-odds-details-container {
+    padding: 10px 4px;
+  }
+
+  .exchange_match_odds {
+    padding: 0.4rem 0rem;
+  }
+
+  .exchange_match_title {
+    font-size: 12px;
+  }
+
+  .tabs button {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 950px) {
+  .session-exchange_match_header p {
+    width: 100%;
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 400px) {
+  .live_tv_header p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .session-exchange_match_header p {
+    max-width: 90px;
+    font-size: 12px;
+  }
+
+  .exchange_match_title {
+    font-size: 10px;
+  }
+
+  .exchange_match_header p {
+    font-size: 12px;
+  }
+
+  .tabs button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 280px) {
+  .session-exchange_match_header p {
+    max-width: 70px;
+    font-size: 12px;
+  }
+}
+
+/*------------------------ Animation Blur -----------------------------*/
+.animation-blur {
+  border-radius: 4px;
+  position: absolute;
+  max-width: 100%;
+  width: 200px;
+  height: 91%;
+  background-color: rgba(0, 0, 0, 0.718);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.animation-blur p {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 413px) {
+  .animation-blur {
+    width: 185px;
+  }
+}

@@ -1,0 +1,524 @@
+
+
+.bet-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.bet-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bet-button.loading {
+  background-color: gray;
+}
+
+.bet-slip-wrapper {
+  width: 305px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(31.3rem);
+}
+
+.bet-slip-wrapper.betslip-open {
+  transform: translateY(0px);
+}
+
+.bet-slip-box {
+  width: 100%;
+  background-color: var(--header-bg-color);
+  /* border-left: 1px solid rgba(172, 255, 47, 0.459); */
+  height: 550px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.bet-slip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--buttons-bg-color);
+  padding: 0.7rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.bet-slip-header span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  padding: 0.08rem 0.4rem;
+  color: var(--header-bg-color);
+  font-weight: 700;
+  letter-spacing: 1;
+}
+
+.bet-slip-header span svg {
+  font-size: 22px;
+}
+
+.bet-slip-tab-navigator {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(32 42 57);
+}
+
+.bet-slip-tab {
+  padding: 0.5rem 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  width: 40%;
+  color: rgb(216, 216, 216);
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.active-tab {
+  border-bottom: 2px solid var(--buttons-text-color);
+  color: white;
+  font-weight: 700;
+}
+
+.bet-slip-card {
+  padding: 0.5rem;
+  /* height: 200px; */
+  /* background-color: var( --background-color); */
+}
+
+.bet-slip-card p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.bet-slip-amount {
+  padding: 2px 10px;
+}
+
+.bet-slip-amount h5 {
+  font-weight: 700;
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+}
+
+.bet-min-max-amt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgb(212, 211, 211);
+  padding: 4px;
+}
+
+.bet-input-field {
+  border: 1px solid rgba(128, 128, 128, 0.563);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.2rem;
+  border-radius: 0.4rem;
+}
+
+.bet-input-field span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding-right: 0.4rem;
+}
+
+.bet-input-field input {
+  padding: 0.4rem 0.4rem;
+  background-color: transparent;
+  width: 100%;
+  font-size: 0.7rem;
+  outline: none;
+  border: none;
+  color: var(--text-color);
+}
+
+.bet-price-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 0px;
+
+}
+
+.bet-price-set p {
+  background-color: rgb(32 42 57);
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 12px;
+  flex: 1;
+  transition: 0.4s all ease;
+  cursor: pointer;
+}
+
+.bet-price-set p:hover {
+  background-color: var(--buttons-text-color);
+}
+
+.bet-min-max-amt p {
+  display: flex;
+  justify-content: space-between;
+  color: grey;
+}
+
+.bet-slip-make-bet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem;
+}
+
+.place-bet-indv {
+  width: 100%;
+}
+
+.indv-placebet-btn {
+  font-weight: 600;
+  font-size: 0.8rem;
+  outline: none;
+  border: none;
+  padding: 0rem 0rem;
+  display: flex;
+  justify-content: center;
+  color: #000;
+  cursor: pointer;
+  background-color: var(--buttons-text-color);
+  transition: background 0.3s ease;
+}
+.indv-placebet-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: gray;
+}
+
+.bet-slip-make-bet button {
+  width: 80%;
+  font-weight: 600;
+  font-size: 0.8rem;
+  outline: none;
+  border: none;
+  padding: 0.4rem 0;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  background-color: var(--buttons-text-color);
+}
+
+.odds-setting {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.odds-settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.4rem 0.8rem;
+  font-weight: 600;
+  background-color: rgb(32 42 57);
+
+}
+
+.odds-delete-btn {
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+  padding: 0.6rem 0.8rem;
+  background-color: rgb(32 42 57);
+
+}
+
+.no-betplace-box {
+  padding: 15px;
+
+}
+
+.no-bet-content {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.no-bet-icon {
+  padding: 9px;
+  border-radius: 50%;
+  font-size: 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: var(--buttons-text-color);
+  color: white;
+}
+
+.no-bet-data span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.no-bet-data p {
+  font-size: 12px;
+  color: rgb(185, 184, 184);
+}
+
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Bet Slip Item */
+.betplace-container {
+  /* padding-bottom: 6rem; */
+  max-height: 450px;
+  overflow-y: scroll;
+  background-color: rgb(22 31 44);
+}
+
+.bet-odds-placed-card {
+  display: flex;
+  margin-left: 5px;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: grey;
+  background: var(--background-color);
+  min-height: 200px;
+}
+
+.bet-odds-placed-card-header {
+  padding: 8px;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  cursor: pointer;
+  /* height: 100%; */
+  background-color: rgb(46 56 72);
+
+}
+
+.bet-odds-placed-card-header span {
+  height: 100%;
+  font-size: 18px;
+}
+
+.bet-odds-placed-card-container {
+  display: flex;
+  margin-top: 0.4rem;
+  background-color: rgb(32 42 56);
+}
+
+.bet-odds-placed-card-body {
+  font-size: 0.8rem;
+  padding: 8px;
+  width: 100%;
+}
+
+.bet-odds-placed-card-body-game-name {
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.bet-odds-placed-card-body-game-name span {
+  display: flex;
+  align-items: center;
+}
+
+.bet-odds-placed-card-body-game-name span svg {
+  margin: 0;
+}
+
+.ai-robo {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--buttons-text-color);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.4rem;
+  margin: 0.1rem 0.1rem;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.bet-odds-placed-card-body-game-vs {
+  font-size: 10px;
+  font-weight: 500;
+  color: #bfb9b9;
+}
+
+.bet-odds-placed-card-body-game-vs-odds {
+  font-size: 10px;
+
+  color: #bfb9b9;
+  font-weight: 500;
+}
+
+.bet-odds-placed-card-body-game-vs-price {
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.bet-odds-placed-card-body-game-vs-price input {
+  background-color: #1b1919;
+  color: aliceblue;
+  font-size: 12px;
+  border-radius: 0.2rem;
+  width: 100px;
+  border: none;
+  text-align: end;
+  outline: none;
+  padding: 0.1rem 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 2px;
+}
+
+.custom-checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.custom-checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.custom-checkbox {
+  display: none;
+  /* Hides the default checkbox */
+}
+
+.custom-checkbox+.custom-checkbox-text::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  vertical-align: middle;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.custom-checkbox:checked+.custom-checkbox-text::before {
+  background-color: var(--buttons-text-color);
+  border-color: var(--buttons-text-color);
+}
+
+.custom-checkbox-text {
+  user-select: none;
+}
+
+/* @media screen and (max-width: 1190px){
+  .bet-slip-box{
+    display: none;
+  }
+} */
+.bet-slip-icon {
+  position: fixed;
+  bottom: 6rem;
+  left: 46%;
+  display: none;
+}
+
+.no-bet-icon {
+  position: relative;
+}
+
+.bet-slip-count {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  background-color: rgba(37, 37, 40, 0.679);
+  padding: 1px 5px;
+  font-size: 16px;
+  font-weight: 700;
+  top: -8px;
+  border-radius: 50%;
+  right: 0;
+}
+
+.betslip-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 1;
+}
+
+@media (max-width:768px) {
+  .betslip-overlay-open {
+    display: block;
+  }
+}
+
+
+@media (max-width:900px) {
+  .bet-slip-wrapper {
+    width: 100%;
+    z-index: 10000;
+    transform: translateY(35rem);
+  }
+
+  .bet-slip-icon {
+    display: block;
+    bottom: 5.4rem;
+  }
+}
+
+@media (max-width:600px) {
+  .bet-slip-box {
+    max-height: 450px;
+
+  }
+
+  .betplace-container {
+    max-height: 350px;
+  }
+
+  .bet-odds-placed-card {
+    min-height: 95px;
+  }
+}
+
+@media (max-width:450px) {
+  .bet-slip-icon {
+    bottom: 5.2rem;
+  }
+}

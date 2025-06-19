@@ -1,0 +1,368 @@
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.signup-overlay {
+  position: absolute;
+  /* z-index: 1000; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  width: 100%;
+  background: rgba(0, 0, 0, 0.801);
+  /* Dimmed background for the overlay */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.signup-container {
+  display: flex;
+  /* height: 650px; */
+  width: 50%;
+  background: var(--background-color);
+  /* border-radius: 1.5rem; */
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  animation: scaleIn 0.5s ease-in-out;
+  padding-bottom: 1rem;
+}
+
+.signup-section-first {
+  position: relative;
+  width: 50%;
+}
+
+.auth-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ads-details {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-color);
+  width: 100%;
+  text-align: center;
+}
+
+.ads-details h1 {
+  font-weight: 800;
+  font-size: 2.2rem;
+}
+
+.ads-details p {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.signup-section-second {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  overflow-y: auto;
+}
+
+.signup-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 1rem 0;
+}
+
+.signup-header h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  color: var(--buttons-text-color);
+}
+
+.cancel-icon {
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1rem;
+  background-color: #323738;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  border-radius: 4px;
+}
+
+.signup-form .form-group {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid gray;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  /* margin-top: 1rem; */
+  color: #fff;
+}
+
+.form-groups input {
+  border: 1px solid gray;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  color: #fff;
+}
+
+.password-toggle {
+  /* border: 2px solid red; */
+  position: absolute;
+  top: 20px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 0.7rem;
+  padding-top: 0.4rem;
+}
+
+.referral-toggle p {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.agreement {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.check-btn {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.agreement-box {
+  display: flex;
+  align-items: center;
+}
+
+.agreement-box p {
+  font-size: 0.9rem;
+}
+
+.signup-btn {
+  width: 100%;
+  background-image: var(--buttons-bg-color);
+  color: #000;
+  font-weight: 700;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1.4rem;
+}
+
+.signup-with-options {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.signup-with-options-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.already-account {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.already-account span {
+  color: rgb(36, 238, 137);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.phone-number-group {
+
+  display: flex;
+  /* align-items: center; */
+  gap: 0.5rem;
+}
+
+.country-code-picker {
+  width: 20%;
+  color: #fff;
+  padding: 0.4rem;
+  border: 1px solid gray;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+}
+
+.phone-field {
+  width: 80%;
+  padding: 0.8rem;
+  border: 1px solid gray;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+}
+
+.country-code-picker option {
+  color: #000;
+}
+
+.react-tel-input {
+  width: 100%;
+  background: transparent;
+}
+
+.react-tel-input .form-control {
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+.react-tel-input .form-control {
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+.react-tel-input .flag-dropdown {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid #cacaca65;
+  border-radius: 3px 0 0 3px;
+}
+
+.react-tel-input .form-control {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 0.01rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px;
+  margin-left: 0;
+  background: transparent;
+  border: 1px solid #cacaca8e;
+  border-radius: 5px;
+  line-height: 25px;
+  height: 35px;
+  width: 100%;
+  outline: none;
+}
+
+.react-tel-input .country-list .country {
+  color: #000;
+}
+
+@media (max-width: 700px) {
+  .signup-overlay {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  .signup-section-first {
+    display: none;
+  }
+
+  .signup-container {
+    width: 100%;
+    border-radius: 0rem;
+  }
+
+  .signup-section-second {
+    width: 100%;
+  }
+}
+
+
+/* otp password */
+.otp-modal {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.otp-modal-content {
+  width: 500px;
+  padding: 2rem 1rem;
+  background-color: #323738;
+  border-radius: 4px;
+  /* height: 300px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+
+}
+
+.otp-modal-content h2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+  margin-bottom: 1rem;
+}
+
+.otp-modal-content input {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 10px;
+  width: 100%;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+
+.otp-modal-content button {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 10px;
+  width: 100%;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  background-image: var(--buttons-bg-color);
+}
+
+.resend-button {
+  margin-top: .4rem;
+  color: #000;
+}

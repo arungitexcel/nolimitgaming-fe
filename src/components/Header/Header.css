@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   font-weight: 700;
   color: var(--buttons-text-color);
   animation: blink-effect 1.5s infinite; /* Adjust duration for blink speed */

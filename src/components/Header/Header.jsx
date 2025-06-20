@@ -31,7 +31,7 @@ const Header = ({ toggleBar, handleClosePopup, handlePopup }) => {
         <img src={logo} alt="" />
         <div className="logo-heading">NoLimitGaming.Bet</div>
       </div>
-      <div className="coming_soon">Coming In 2025</div>
+      <div className="coming_soon">WHOLESALE BETTING EXCHANGE - COMING IN 2025</div>
       <div className="header_btns">
         <button className="header-desc-btn" style={{ fontSize: "13px" }}>
           White Label inquiries

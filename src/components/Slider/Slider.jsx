@@ -34,9 +34,18 @@ const Slider = ({ handleOpenLogin }) => {
   ];
 
   const mobileSliderImages = [
-    { image: mslide1 },
-    { image: mslide2 },
-    { image: mslide3 },
+    { image: slide1 },
+    { image: slide2 },
+    { image: slide3 },
+    { image: slide4 },
+    { image: slide5 },
+    { image: slide6 },
+    { image: slide7 },
+    { image: slide8 },
+    { image: slide9 },
+    { image: slide10 },
+    { image: slide11 },
+    { image: slide12 },
   ];
 
   useEffect(() => {

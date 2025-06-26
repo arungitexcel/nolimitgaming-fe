@@ -37,8 +37,8 @@ const BettingTable = ({ sportsData }) => {
             key={idx}
             style={{ borderTop: "1px solid #333", padding: "10px 0" }}
           >
-            <div style={{ display: "flex", marginBottom: "5px" }}>
-              <div style={{ flex: 2 }}>
+            <div style={{ display: "flex", marginBottom: "5px", justifyContent: 'space-between' }}>
+              <div style={{ flex: 1 }}>
                 <div style={{ color: "#999", fontSize: "14px" }}>
                   {new Date(game.gameTime * 1000).toLocaleDateString("en-US", {
                     weekday: "short",
@@ -51,7 +51,12 @@ const BettingTable = ({ sportsData }) => {
                 </div>
                 <div>{game.teamOneName}</div>
               </div>
+              <button
+                className="header-signup-btn"
 
+              >
+                AI Advisor
+              </button>
               <div
                 style={{
                   flex: 1,
@@ -62,6 +67,7 @@ const BettingTable = ({ sportsData }) => {
                   textAlign: "center",
                 }}
               >
+
                 <div>
                   {game.line}{" "}
                   <span style={{ color: "rgb(36, 238, 137)" }}>

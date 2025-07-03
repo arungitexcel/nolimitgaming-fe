@@ -25,7 +25,7 @@ const Exchange = () => {
 
   const { data, error, isLoading } = useSWR(
     activeGameId
-      ? `/sports/get-active-market?sportIds=${activeGameId}&pageSize=50`
+      ? activeGameId == 3 ? `/sports/get-mlb-market` : `/sports/get-active-market?sportIds=${activeGameId}&pageSize=50`
       : null,
     fetchData
   );

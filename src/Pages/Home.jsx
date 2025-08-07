@@ -16,6 +16,7 @@ import { useNavRoute } from "../context/navRoute";
 import { useLocation } from "react-router-dom";
 import Loader from "../components/ExchnageUtility/GameUtility/Loader";
 import "../Style/Home.css"
+import HoverButton from "../components/HoverButton/HoverButton";
 
 const Home = () => {
   const [underlineStyle, setUnderlineStyle] = useState({});
@@ -140,23 +141,29 @@ const Home = () => {
                     <button className="ai-btn">AI Button</button>
                   </div>
                   <div className="market-list">
-                    {item.markets.map((market, mIdx) => (
-                      <div key={mIdx} className="market-row">
-                        <span className="market-title">{market.groupItemTitle || "--"}</span>
-                        <span className="market-price">{market.price || "—"}</span>
-                        <div className="yes-no">
-                          <button className="yes">Yes</button>
-                          <button className="no">No</button>
+                    {item.markets.map((market, mIdx) => {
+                      return (
+                        <div key={mIdx} className="market-row">
+                          <span className="market-title">
+                            {market.groupItemTitle || "--"}
+                          </span>
+                          <span className="market-price">
+                            {market.price || "--"}
+                          </span>
+                          <div className="yes-no">
+                            <HoverButton market={market} outcome="Yes" />
+                            <HoverButton market={market} outcome="No" />
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
-                  <div className="volume">${item.volume} Vol.</div>
                 </div>
               ))
             )}
           </div>
         )}
+
 
       </div>
       <GamenewListSlider

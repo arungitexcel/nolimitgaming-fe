@@ -5,11 +5,13 @@
   height: 100vh;
   width: 250px;
 }
+
 .sidebar-items {
   padding: 1rem 1rem;
   overflow-y: scroll;
   max-height: 90vh;
 }
+
 .sidebar-items::-webkit-scrollbar {
   width: 4px;
 }
@@ -25,9 +27,11 @@
   transition: 0.4s ease-in-out;
   cursor: pointer;
 }
+
 .sidebar-item img {
   width: 2rem;
 }
+
 .sidebar-item div p {
   font-weight: 700;
   font-size: 0.8rem;
@@ -35,11 +39,13 @@
   gap: 0.4rem;
   align-items: center;
 }
+
 .sidebar-item div p span {
   color: #4bec82;
   display: flex;
   align-items: center;
 }
+
 .sidebar-item-arrow {
   display: flex;
   background-color: #474c4d;
@@ -73,9 +79,11 @@
   transition: 0.4s ease-in-out;
   cursor: pointer;
 }
+
 .dropdown-item:hover {
   background-image: linear-gradient(60deg, #00ff512b 0%, #67666620 100%);
 }
+
 .dropdown-header {
   display: flex;
   justify-content: space-between;
@@ -84,10 +92,12 @@
   font-size: 0.8rem;
   cursor: pointer;
 }
+
 .dropdown-header span {
   display: flex;
   align-items: center;
 }
+
 .dropdown-list {
   list-style: none;
   margin: 0.2rem 0 0;
@@ -95,6 +105,7 @@
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
 }
+
 .dropdown-list li {
   padding: 0.3rem 1rem;
   display: flex;
@@ -106,15 +117,44 @@
   cursor: pointer;
   transition: background-color 0.4s ease;
 }
+
 .dropdown-list li:hover {
   background-image: linear-gradient(60deg, #00ff512b 0%, #77777720 100%);
   border-radius: 0.4rem;
 }
+
 .active-sport-tab {
   background-image: linear-gradient(60deg, #00ff512b 0%, #77777720 100%);
   color: white;
   font-weight: bold;
   border-radius: 8px;
+}
+
+.prediction-tab {
+  background: #19212c;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 4px 25px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.prediction-tab:hover {
+  opacity: 0.9;
+}
+
+.active-tab {
+  background: var(--buttons-bg-color);
+  font-weight: bold;
+  color: #000 !important;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 4px 25px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 
 /* Other Navigation Items */
@@ -125,6 +165,7 @@
   margin-top: 0.8rem;
   margin-bottom: 6rem;
 }
+
 .other-sidebar-items {
   padding: 0.5rem 0.8rem;
   font-size: 0.8rem;
@@ -191,18 +232,23 @@ body.light-mode .sidebar-theme-switch button {
 body.light-mode .sidebar-theme-switch button:hover {
   background-color: #d6d6d6;
 }
-.tabs {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  /* border-bottom: 2px solid #ccc; */
-}
 
 .tabs {
   background-color: rgba(12, 12, 12, 0.325);
   border-radius: 0.4rem;
   margin-top: 0.5rem;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
+
+.tabs-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .tabs button {
   flex: 1;
   padding: 0.5rem 0.4rem;
@@ -237,6 +283,7 @@ body.light-mode .sidebar-theme-switch button:hover {
   cursor: pointer;
   margin-top: 0.5rem;
 }
+
 .ai-dropdown-item:hover {
   background-image: linear-gradient(60deg, #00ff5175 0%, #6766667f 100%);
 }
@@ -291,9 +338,11 @@ body.light-mode .sidebar-theme-switch button:hover {
   transition: 0.4s ease-in-out;
   cursor: pointer;
 }
+
 .responsive-sidebar-item img {
   width: 2.5rem;
 }
+
 .responsive-sidebar-item div p {
   font-weight: 700;
   font-size: 0.8rem;
@@ -301,11 +350,13 @@ body.light-mode .sidebar-theme-switch button:hover {
   gap: 0.4rem;
   align-items: center;
 }
+
 .responsive-sidebar-item div p span {
   color: #4bec82;
   display: flex;
   align-items: center;
 }
+
 .responsive-sidebar-item-arrow {
   display: flex;
   background-color: #474c4d;

@@ -36,15 +36,18 @@ import { useTab } from "../../context/TabContext";
 import { useAuth } from "../../context/AuthContext";
 import { useAllSports } from "../../api/AllExchange";
 import Loader from "../ExchnageUtility/GameUtility/Loader";
+import { fetchData } from "../../api/ClientFunction";
+import useSWR, { mutate } from "swr";
 
 export const Sidebar = ({ handlePopup }) => {
   const { user } = useAuth();
   const { setActiveGameId, setActiveTab, activeGameId } = useTab();
-  const { handleNavRoute, liveUpcome } = useNavRoute();
+  const { handleNavRoute, liveUpcome, setIsPredictionView } = useNavRoute();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const location = useLocation();
+  const isPredictionRoute = location.pathname === '/prediction';
 
   const { handleOpenLogin } = useNavRoute();
   const openLogin = () => {
@@ -60,6 +63,10 @@ export const Sidebar = ({ handlePopup }) => {
       handleClose();
     }
   };
+  const handlePress = () => {
+    setIsPredictionView(true);
+    setActivetab("Prediction");
+  };
 
   // Sync activetab with the current route
   const [activetab, setActivetab] = useState(
@@ -70,6 +77,12 @@ export const Sidebar = ({ handlePopup }) => {
     // Update activetab when the route changes
     setActivetab(location.pathname.includes("/exchange") ? "Exchange" : "Book");
   }, [location.pathname]);
+  useEffect(() => {
+    if (location.pathname === "/prediction") {
+      setActivetab("Prediction");
+    }
+  }, [location.pathname]);
+
 
   const handleTabSwitch = (tab) => {
     setActivetab(tab);
@@ -329,41 +342,57 @@ export const Sidebar = ({ handlePopup }) => {
         <div className="dropdown-content">
           {/* Tabs */}
           <div className="tabs">
-            <button
-              className={activetab === "Book" ? "active-tab" : ""}
-              onClick={() => handleTabSwitch("Book")}
-            >
-              Sportsbook
-            </button>
-            <button
-              className={activetab === "Exchange" ? "active-tab" : ""}
-              onClick={() => handleTabSwitch("Exchange")}
-            >
-              Exchange
-            </button>
+            <div className="tabs-row">
+              <button
+                className={activetab === "Book" ? "active-tab" : ""}
+                onClick={() => handleTabSwitch("Book")}
+              >
+                Sportsbook
+              </button>
+              <button
+                className={activetab === "Exchange" ? "active-tab" : ""}
+                onClick={() => handleTabSwitch("Exchange")}
+              >
+                Exchange
+              </button>
+            </div>
+
+            {isPredictionRoute && (
+              <button
+                className={activetab === "Prediction" ? "active-tab" : "prediction-tab"}
+                onClick={handlePress}
+              >
+                Prediction
+              </button>
+            )}
           </div>
+
 
           {/* Tab Content */}
           <ul className="dropdown-list">
             {isLoading ? (
               <Loader />
             ) : (
-              (activetab === "Book" ? sportsActiveName : filteredAllSports).map(
-                (item) => (
-                  <li
-                    key={item.sportId}
-                    onClick={() => {
-                      handleSportsNav(item.label, item.sportId);
-                    }}
-                    className={
-                      item.sportId === activeGameId ? "active-sport-tab" : ""
-                    }
-                  >
-                    <span style={{ fontSize: "1.2rem" }}>{item.icon}</span>
-                    {item.label}
-                  </li>
-                )
-              )
+              (activetab === "Book"
+                ? sportsActiveName
+                : activetab === "Exchange"
+                  ? filteredAllSports
+                  : []).map(
+                    (item) => (
+                      <li
+                        key={item.sportId}
+                        onClick={() => {
+                          handleSportsNav(item.label, item.sportId);
+                        }}
+                        className={
+                          item.sportId === activeGameId ? "active-sport-tab" : ""
+                        }
+                      >
+                        <span style={{ fontSize: "1.2rem" }}>{item.icon}</span>
+                        {item.label}
+                      </li>
+                    )
+                  )
             )}
           </ul>
         </div>
@@ -467,11 +496,22 @@ export const Sidebar = ({ handlePopup }) => {
 export const ResponsiveSidebar = ({ handleClose }) => {
   const { user } = useAuth();
   const { setActiveGameId, activeGameId } = useTab();
-  const { handleNavRoute, liveUpcome } = useNavRoute();
+  const { handleNavRoute, liveUpcome, setIsPredictionView } = useNavRoute();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { isLogin } = useAuth();
   const [activetab, setActivetab] = useState("Sportsbook");
+  const isPredictionRoute = location.pathname === '/prediction';
+  useEffect(() => {
+    if (location.pathname === "/prediction") {
+      setActivetab("Prediction");
+    }
+  }, [location.pathname]);
+  const handlePress = () => {
+    setIsPredictionView(true);
+    setActivetab("Prediction");
+    handleClose();
+  };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -778,6 +818,10 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                 >
                   Exchange
                 </button>
+                {isPredictionRoute && (
+                  <button className={activetab === "Prediction" ? "active-tab" : "prediction-tab"} onClick={handlePress}>
+                    Prediction
+                  </button>)}
               </div>
 
               {/* Tab Content */}

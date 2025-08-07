@@ -1,0 +1,124 @@
+.polymarket-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.title {
+    color: #fff;
+}
+
+.polymarket-card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.polymarket-card:hover {
+    transform: translateY(-4px);
+}
+
+.card-header {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.card-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.card-header h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ai-btn {
+    font-size: 12px;
+    background-color: #4bec82;
+    color: #0a0a0a;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.market-list {
+    padding: 0 12px 12px;
+}
+
+.market-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    gap: 8px;
+}
+
+.market-title {
+    flex: 1;
+    font-size: 14px;
+    color: #ccc;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.market-price {
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 50px;
+    color: #eee;
+}
+
+.yes-no {
+    display: flex;
+    gap: 4px;
+}
+
+.yes,
+.no {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: none;
+    cursor: default;
+}
+
+.yes {
+    background-color: #2e7d32;
+    color: #e4f7e6;
+}
+
+.no {
+    background-color: #c62828;
+    color: #fcebea;
+}
+
+.volume {
+    font-size: 12px;
+    color: #aaa;
+    padding: 0 12px 12px;
+    border-top: 1px solid #333;
+    margin-top: auto;
+}

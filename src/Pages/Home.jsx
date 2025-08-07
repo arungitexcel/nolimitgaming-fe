@@ -5,7 +5,7 @@ import SportsCard from "../components/Cards/SportsCard";
 import { LiveSportsCard } from "../components/Cards/LiveSportsCard";
 import Slider from "../components/Slider/Slider";
 import GamenewListSlider from "../components/GamelistSlider/GamenewListSlider";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { fetchData } from "../api/ClientFunction";
 import { useTab } from "../context/TabContext";
 import { MdOutlineOnlinePrediction } from "react-icons/md";
@@ -13,6 +13,9 @@ import { SiTomorrowland } from "react-icons/si";
 import SignIn from "../components/Registration/SignIn";
 import SignUp from "../components/Registration/SignUp";
 import { useNavRoute } from "../context/navRoute";
+import { useLocation } from "react-router-dom";
+import Loader from "../components/ExchnageUtility/GameUtility/Loader";
+import "../Style/Home.css"
 
 const Home = () => {
   const [underlineStyle, setUnderlineStyle] = useState({});
@@ -23,9 +26,25 @@ const Home = () => {
   const [sportsBookData, setSportsData] = useState();
   const [sportsBookUpcomingData, setSportsUpcomingData] = useState();
   const [sportsStatusTab, setSportsStatusTab] = useState("live");
+  const location = useLocation();
 
-  const {handleClose, handleOpenLogin,handleOpenSignup,openLogin, openSignUp,setLiveUpcome} = useNavRoute();
+  const { handleClose, handleOpenLogin, handleOpenSignup, openLogin, openSignUp, setLiveUpcome, isPredictionView } = useNavRoute();
+  console.log("isPredictionView", isPredictionView)
 
+  const POLYMARKET_KEY = `/sports/polymarket-events`;
+
+  const { data: polymarketData, error: polyError, isLoading: polyLoading } = useSWR(
+    isPredictionView ? POLYMARKET_KEY : null,
+    fetchData
+  );
+
+  // Optional: refetch on each click if you want fresh data
+  useEffect(() => {
+    if (isPredictionView) {
+      mutate(POLYMARKET_KEY); // refresh data
+    }
+  }, [isPredictionView]);
+  console.log("polymarketData", polymarketData);
   useEffect(() => {
     const activeTab = tabRefs.current.find(
       (el) => el?.dataset.tab === sportsStatusTab
@@ -43,39 +62,45 @@ const Home = () => {
     setSportsStatusTab(type);
   };
 
-  const { data, error, isLoading } = useSWR(
-    `/sports/book/inplay-events?sportId=${activeGameId}&pageNo=1`,
-    fetchData,
-    { refreshInterval: 1000 }
-  );
+  // const { data, error, isLoading } = useSWR(
+  //   `/sports/book/inplay-events?sportId=${activeGameId}&pageNo=1`,
+  //   fetchData,
+  //   { refreshInterval: 1000 }
+  // );
 
-  const {
-    data: UpcomingData,
-    UpcomingDataerror,
-    isLoadingUpcomingData,
-  } = useSWR(
-    `/sports/book/upcoming-events?sportId=${activeGameId}&pageNo=1`,
-    fetchData,
-    { refreshInterval: 1000 }
-  );
+  // const {
+  //   data: UpcomingData,
+  //   UpcomingDataerror,
+  //   isLoadingUpcomingData,
+  // } = useSWR(
+  //   `/sports/book/upcoming-events?sportId=${activeGameId}&pageNo=1`,
+  //   fetchData,
+  //   { refreshInterval: 1000 }
+  // );
 
-  useEffect(() => {
-    if (data?.sports) {
-      setSportsData(data.sports);
-    }
-    if (UpcomingData?.sports) {
-      setSportsUpcomingData(UpcomingData.sports);
-    }
-  }, [data, UpcomingData]);
+  // useEffect(() => {
+  //   if (data?.sports) {
+  //     setSportsData(data.sports);
+  //   }
+  //   if (UpcomingData?.sports) {
+  //     setSportsUpcomingData(UpcomingData.sports);
+  //   }
+  // }, [data, UpcomingData]);
 
 
   const handlegameName = (gname, id) => {
     setGameName(gname);
     setGameId(id);
   };
+  const polymarketArray = polymarketData && typeof polymarketData === "object"
+    ? Object.entries(polymarketData)
+      .filter(([key]) => !isNaN(key))
+      .map(([, value]) => value)
+    : [];
+
   return (
     <div className="homePage_Sportsbook">
-      <Slider handleOpenLogin={handleOpenLogin}/>
+      <Slider handleOpenLogin={handleOpenLogin} />
 
       <div className="home-tab-type">
         <div className="livesports-header" style={{ position: "relative" }}>
@@ -102,20 +127,51 @@ const Home = () => {
           {/* Animated underline */}
           <div className="underline" style={underlineStyle}></div>
         </div>
+        {isPredictionView && location.pathname === "/prediction" && (
+          <div className="polymarket-wrapper">
+            {polyLoading ? (
+              <Loader />
+            ) : (
+              polymarketArray.map((item, idx) => (
+                <div key={idx} className="polymarket-card">
+                  <div className="card-header">
+                    <img src={item.image} alt={item.title} />
+                    <h4 className="title">{item.title}</h4>
+                    <button className="ai-btn">AI Button</button>
+                  </div>
+                  <div className="market-list">
+                    {item.markets.map((market, mIdx) => (
+                      <div key={mIdx} className="market-row">
+                        <span className="market-title">{market.groupItemTitle || "--"}</span>
+                        <span className="market-price">{market.price || "—"}</span>
+                        <div className="yes-no">
+                          <button className="yes">Yes</button>
+                          <button className="no">No</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="volume">${item.volume} Vol.</div>
+                </div>
+              ))
+            )}
+          </div>
+        )}
+
       </div>
       <GamenewListSlider
         titles="Live/Upcoming"
         handlegameName={handlegameName}
-        sportsStatusTab = {sportsStatusTab}
-      
+        sportsStatusTab={sportsStatusTab}
+
       />
       {sportsStatusTab === "live" && (
         <LiveSportsCard
           gameName={gameName}
           gameId={gameId}
           sportsBookData={sportsBookData}
-          isLoading={isLoading}
-          isLoadingUpcomingData={isLoadingUpcomingData}
+          // isLoading={isLoading}
+          // isLoadingUpcomingData={isLoadingUpcomingData}
           handleOpenLogin={handleOpenLogin}
         />
       )}
@@ -126,13 +182,13 @@ const Home = () => {
           gameName={gameName}
           gameId={gameId}
           sportsBookData={sportsBookUpcomingData}
-          isLoading={isLoading}
-          isLoadingUpcomingData={isLoadingUpcomingData}
+          // isLoading={isLoading}
+          // isLoadingUpcomingData={isLoadingUpcomingData}
           handleOpenLogin={handleOpenLogin}
         />
       )}
       {/* <SportsCard /> */}
-     
+
     </div>
   );
 };

@@ -137,8 +137,8 @@ const Home = () => {
                 <div key={idx} className="polymarket-card">
                   <div className="card-header">
                     <img src={item.image} alt={item.title} />
-                    <h4 className="title">{item.title}</h4>
-                    <button className="ai-btn">AI Button</button>
+                    <h4 className="title" title={item.title}>{item.title}</h4>
+                    <button className="ai-btn">AI Advisor</button>
                   </div>
                   <div className="market-list">
                     {item.markets.map((market, mIdx) => {

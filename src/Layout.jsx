@@ -13,6 +13,7 @@ import OTPVerification from "./components/Registration/OTPVerification";
 import { useAuth } from "./context/AuthContext";
 import { useNavRoute } from "./context/navRoute";
 import ScrollToTopController from "./components/ScrollToTop/ScrollToTopController";
+import { useLocation } from "react-router-dom";
 
 const Layout = () => {
   const {
@@ -22,7 +23,9 @@ const Layout = () => {
     openLogin,
     openSignUp,
   } = useNavRoute();
-  
+  const location = useLocation();
+  const hideOnPrediction = location.pathname === "/prediction";
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [popupStates, setPopupStates] = useState({
     signIn: false,
@@ -31,7 +34,7 @@ const Layout = () => {
     responsive: false,
     otpVerify: false,
   });
-  const {isLogin} = useAuth();
+  const { isLogin } = useAuth();
 
   // useEffect(() => {
   //   setPopupStates((prevStates) => ({
@@ -61,23 +64,22 @@ const Layout = () => {
       <div className="layout-body">
         {/* Sidebar or IconBar */}
         <div
-          className={`sidebar-container ${
-            isSidebarOpen ? "open" : "collapsed"
-          }`}
+          className={`sidebar-container ${isSidebarOpen ? "open" : "collapsed"
+            }`}
         >
           {isSidebarOpen ? <Sidebar handlePopup={handlePopup} /> : <IconBar />}
         </div>
 
         {/* Shared Scrollable Content */}
         <div
-          className={`content-container ${
-            isSidebarOpen ? "sidebar-open" : "sidebar-collapsed"
-          }`}
+          className={`content-container ${isSidebarOpen ? "sidebar-open" : "sidebar-collapsed"
+            }`}
         >
           <div className="main-content">
-            <ScrollToTopController/>
+            <ScrollToTopController />
             <Outlet />
-            <Footer />
+            {!hideOnPrediction && (
+              <Footer />)}
           </div>
           {/* <div className="bet-slip">
             <BetSlip />
@@ -86,7 +88,7 @@ const Layout = () => {
       </div>
       {
         isLogin &&
-      <BetSlip />
+        <BetSlip />
       }
 
       {/* Bottom Tab Bar */}

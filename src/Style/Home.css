@@ -1,8 +1,16 @@
 .polymarket-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns by default */
     gap: 16px;
     padding: 16px;
+}
+
+@media (max-width: 600px) {
+    .polymarket-wrapper {
+        grid-template-columns: 1fr;
+        margin-top: 35px;
+    }
 }
 
 .title {
@@ -47,9 +55,19 @@
     margin: 0;
     flex: 1;
     color: #fff;
-    white-space: nowrap;
+
+    /* Remove single line truncation */
+    white-space: normal;
+
+    /* New multiline ellipsis styles */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* limit to 2 lines */
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.4em;
+    max-height: 2.8em;
 }
 
 .ai-btn {

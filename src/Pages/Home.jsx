@@ -33,6 +33,7 @@ const Home = () => {
   console.log("isPredictionView", isPredictionView)
 
   const POLYMARKET_KEY = `/sports/polymarket-events`;
+  const hideOnPrediction = location.pathname === "/prediction";
 
   const { data: polymarketData, error: polyError, isLoading: polyLoading } = useSWR(
     isPredictionView ? POLYMARKET_KEY : null,
@@ -101,33 +102,35 @@ const Home = () => {
 
   return (
     <div className="homePage_Sportsbook">
-      <Slider handleOpenLogin={handleOpenLogin} />
+      {!hideOnPrediction && (
+        <Slider handleOpenLogin={handleOpenLogin} />)}
 
       <div className="home-tab-type">
-        <div className="livesports-header" style={{ position: "relative" }}>
-          <h5
-            ref={(el) => (tabRefs.current[0] = el)}
-            data-tab="live"
-            className={sportsStatusTab === "live" ? "active-tab-type" : ""}
-            onClick={() => setSportsStatusTab("live")}
-          >
-            <MdOutlineOnlinePrediction />
-            Live Sports
-          </h5>
+        {!hideOnPrediction && (
+          <div className="livesports-header" style={{ position: "relative" }}>
+            <h5
+              ref={(el) => (tabRefs.current[0] = el)}
+              data-tab="live"
+              className={sportsStatusTab === "live" ? "active-tab-type" : ""}
+              onClick={() => setSportsStatusTab("live")}
+            >
+              <MdOutlineOnlinePrediction />
+              Live Sports
+            </h5>
 
-          <h5
-            ref={(el) => (tabRefs.current[1] = el)}
-            data-tab="upcoming"
-            className={sportsStatusTab === "upcoming" ? "active-tab-type" : ""}
-            onClick={() => setSportsStatusTab("upcoming")}
-          >
-            <SiTomorrowland />
-            Upcoming Sports
-          </h5>
+            <h5
+              ref={(el) => (tabRefs.current[1] = el)}
+              data-tab="upcoming"
+              className={sportsStatusTab === "upcoming" ? "active-tab-type" : ""}
+              onClick={() => setSportsStatusTab("upcoming")}
+            >
+              <SiTomorrowland />
+              Upcoming Sports
+            </h5>
 
-          {/* Animated underline */}
-          <div className="underline" style={underlineStyle}></div>
-        </div>
+            {/* Animated underline */}
+            <div className="underline" style={underlineStyle}></div>
+          </div>)}
         {isPredictionView && location.pathname === "/prediction" && (
           <div className="polymarket-wrapper">
             {polyLoading ? (

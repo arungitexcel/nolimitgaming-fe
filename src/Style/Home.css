@@ -2,8 +2,7 @@
 
 .polymarket-wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* 2 columns by default */
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding: 16px;
 }
@@ -71,10 +70,9 @@
 
   /* New multiline ellipsis styles */
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   /* limit to 2 lines */
   -webkit-box-orient: vertical;
-  overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.4em;
   max-height: 2.8em;

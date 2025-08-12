@@ -36,7 +36,7 @@ import { useAllSports } from "../../api/AllExchange";
 import Loader from "../ExchnageUtility/GameUtility/Loader";
 import { fetchData } from "../../api/ClientFunction";
 import useSWR, { mutate } from "swr";
-import { useTags } from "../../context/TagsCOntext";
+import { useTags } from "../../context/TagsContext";
 
 export const Sidebar = ({ handlePopup }) => {
   const { user } = useAuth();

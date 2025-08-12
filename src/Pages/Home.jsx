@@ -19,7 +19,7 @@ import { useLocation } from "react-router-dom";
 import Loader from "../components/ExchnageUtility/GameUtility/Loader";
 import "../Style/Home.css";
 import HoverButton from "../components/HoverButton/HoverButton";
-import { useTags } from "../context/TagsCOntext";
+import { useTags } from "../context/TagsContext";
 
 const Home = () => {
   const [underlineStyle, setUnderlineStyle] = useState({});

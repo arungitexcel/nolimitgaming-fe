@@ -9,7 +9,7 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import { ToastContainer, Flip } from "react-toastify";
 import { NavChangeProvider } from "./context/navRoute.jsx";
 import { TabProvider } from "./context/TabContext.jsx";
-import { TagsProvider } from "./context/TagsCOntext.jsx";
+import { TagsProvider } from "./context/TagsContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

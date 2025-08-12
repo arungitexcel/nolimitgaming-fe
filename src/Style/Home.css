@@ -1,159 +1,169 @@
+/** @format */
+
 .polymarket-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* 2 columns by default */
-    gap: 16px;
-    padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columns by default */
+  gap: 16px;
+  padding: 16px;
 }
 
 @media (max-width: 600px) {
-    .polymarket-wrapper {
-        grid-template-columns: 1fr;
-        margin-top: 35px;
-    }
+  .polymarket-wrapper {
+    grid-template-columns: 1fr;
+    margin-top: 35px;
+  }
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 100%;
 }
 
 .title {
-    color: #fff;
-    cursor: pointer;
+  color: #fff;
+  cursor: pointer;
 }
 
 .polymarket-card {
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s ease;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
 }
 
 .polymarket-card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .card-header {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: space-between;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
 }
 
 .card-header img {
-    width: 40px;
-    height: 40px;
-    border-radius: 6px;
-    object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
 .card-header h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
-    flex: 1;
-    color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+  color: #fff;
 
-    /* Remove single line truncation */
-    white-space: normal;
+  /* Remove single line truncation */
+  white-space: normal;
 
-    /* New multiline ellipsis styles */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    /* limit to 2 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.4em;
-    max-height: 2.8em;
+  /* New multiline ellipsis styles */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4em;
+  max-height: 2.8em;
 }
 
 .ai-btn {
-    font-size: 12px;
-    background-color: #32a058;
-    color: #0a0a0a;
-    padding: 4px 8px;
-    border-radius: 6px;
-    border: none;
-    font-weight: 600;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+  font-size: 12px;
+  background-color: #32a058;
+  color: #0a0a0a;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .ai-btn:hover {
-    background-color: #4bec82;
-    transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #4bec82;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .market-list {
-    padding: 0 12px 12px;
+  padding: 0 12px 12px;
 }
 
 .market-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 8px;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  gap: 8px;
 }
 
 .market-title {
-    flex: 1;
-    font-size: 14px;
-    color: #ccc;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+  flex: 1;
+  font-size: 14px;
+  color: #ccc;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .market-price {
-    font-weight: 600;
-    font-size: 14px;
-    min-width: 50px;
-    color: #eee;
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 50px;
+  color: #eee;
 }
 
 .yes-no {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 
 .yes,
 .no {
-    width: 60px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s ease;
-    overflow: hidden;
-    border:none;
+  width: 60px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+  border: none;
 }
 
 .yes {
-    background-color: #2e7d32;
-    color: #e4f7e6;
-    cursor: pointer;
+  background-color: #2e7d32;
+  color: #e4f7e6;
+  cursor: pointer;
 }
 
 .no {
-    background-color: #c62828;
-    color: #fcebea;
-    cursor: pointer;
+  background-color: #c62828;
+  color: #fcebea;
+  cursor: pointer;
 }
 
 .yes:hover,
 .no:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 .volume {
-    font-size: 12px;
-    color: #aaa;
-    padding: 0 12px 12px;
-    border-top: 1px solid #333;
-    margin-top: auto;
+  font-size: 12px;
+  color: #aaa;
+  padding: 0 12px 12px;
+  border-top: 1px solid #333;
+  margin-top: auto;
 }

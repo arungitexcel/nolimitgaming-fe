@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useRef, useEffect } from "react";
 import GamelistSlider from "../components/GamelistSlider/GamelistSlider";
 import BannerCard from "../components/Cards/BannerCard";
@@ -15,13 +17,15 @@ import SignUp from "../components/Registration/SignUp";
 import { useNavRoute } from "../context/navRoute";
 import { useLocation } from "react-router-dom";
 import Loader from "../components/ExchnageUtility/GameUtility/Loader";
-import "../Style/Home.css"
+import "../Style/Home.css";
 import HoverButton from "../components/HoverButton/HoverButton";
+import { useTags } from "../context/TagsCOntext";
 
 const Home = () => {
   const [underlineStyle, setUnderlineStyle] = useState({});
   const tabRefs = useRef([]);
   const { activeTab, setActiveTab, setActiveGameId, activeGameId } = useTab();
+  const { activeSlug } = useTags();
   const [gameName, setGameName] = useState("American Football");
   const [gameId, setGameId] = useState("sr:sport:16");
   const [sportsBookData, setSportsData] = useState();
@@ -29,16 +33,19 @@ const Home = () => {
   const [sportsStatusTab, setSportsStatusTab] = useState("live");
   const location = useLocation();
 
-  const { handleClose, handleOpenLogin, handleOpenSignup, openLogin, openSignUp, setLiveUpcome, isPredictionView } = useNavRoute();
-  console.log("isPredictionView", isPredictionView)
+  const { handleClose, handleOpenLogin, handleOpenSignup, openLogin, openSignUp, setLiveUpcome, isPredictionView } =
+    useNavRoute();
+  console.log("isPredictionView", isPredictionView);
 
-  const POLYMARKET_KEY = `/sports/polymarket-events`;
+  const POLYMARKET_KEY = `/sports/polymarket-events?slug=${activeSlug}`;
   const hideOnPrediction = location.pathname === "/prediction";
 
-  const { data: polymarketData, error: polyError, isLoading: polyLoading } = useSWR(
-    isPredictionView ? POLYMARKET_KEY : null,
-    fetchData
-  );
+  const {
+    data: polymarketData,
+    error: polyError,
+    isLoading: polyLoading,
+  } = useSWR(isPredictionView && hideOnPrediction ? POLYMARKET_KEY : null, fetchData);
+  console.log("polymarketData", polymarketData);
 
   // Optional: refetch on each click if you want fresh data
   useEffect(() => {
@@ -48,9 +55,7 @@ const Home = () => {
   }, [isPredictionView]);
   console.log("polymarketData", polymarketData);
   useEffect(() => {
-    const activeTab = tabRefs.current.find(
-      (el) => el?.dataset.tab === sportsStatusTab
-    );
+    const activeTab = tabRefs.current.find((el) => el?.dataset.tab === sportsStatusTab);
     if (activeTab) {
       setUnderlineStyle({
         left: activeTab.offsetLeft + "px",
@@ -89,21 +94,36 @@ const Home = () => {
   //   }
   // }, [data, UpcomingData]);
 
-
   const handlegameName = (gname, id) => {
     setGameName(gname);
     setGameId(id);
   };
-  const polymarketArray = polymarketData && typeof polymarketData === "object"
-    ? Object.entries(polymarketData)
-      .filter(([key]) => !isNaN(key))
-      .map(([, value]) => value)
-    : [];
+  const polymarketArray =
+    polymarketData && typeof polymarketData === "object"
+      ? Object.entries(polymarketData)
+          .filter(([key]) => !isNaN(key))
+          .map(([, value]) => value)
+      : [];
+
+  if (isPredictionView && polyLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh", // full screen height
+          width: "100%",
+        }}
+      >
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="homePage_Sportsbook">
-      {!hideOnPrediction && (
-        <Slider handleOpenLogin={handleOpenLogin} />)}
+      {!hideOnPrediction && <Slider handleOpenLogin={handleOpenLogin} />}
 
       <div className="home-tab-type">
         {!hideOnPrediction && (
@@ -130,51 +150,39 @@ const Home = () => {
 
             {/* Animated underline */}
             <div className="underline" style={underlineStyle}></div>
-          </div>)}
-        {isPredictionView && location.pathname === "/prediction" && (
-          <div className="polymarket-wrapper">
-            {polyLoading ? (
-              <Loader />
-            ) : (
-              polymarketArray.map((item, idx) => (
-                <div key={idx} className="polymarket-card">
-                  <div className="card-header">
-                    <img src={item.image} alt={item.title} />
-                    <h4 className="title" title={item.title}>{item.title}</h4>
-                    <button className="ai-btn">AI Advisor</button>
-                  </div>
-                  <div className="market-list">
-                    {item.markets.map((market, mIdx) => {
-                      return (
-                        <div key={mIdx} className="market-row">
-                          <span className="market-title">
-                            {market.groupItemTitle || "--"}
-                          </span>
-                          <span className="market-price">
-                            {market.price || "--"}
-                          </span>
-                          <div className="yes-no">
-                            <HoverButton market={market} outcome="Yes" />
-                            <HoverButton market={market} outcome="No" />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))
-            )}
           </div>
         )}
-
-
+        {isPredictionView && location.pathname === "/prediction" && (
+          <div className="polymarket-wrapper">
+            {polymarketArray.map((item, idx) => (
+              <div key={idx} className="polymarket-card">
+                <div className="card-header">
+                  <img src={item.image} alt={item.title} />
+                  <h4 className="title" title={item.title}>
+                    {item.title}
+                  </h4>
+                  <button className="ai-btn">AI Advisor</button>
+                </div>
+                <div className="market-list">
+                  {item.markets.map((market, mIdx) => {
+                    return (
+                      <div key={mIdx} className="market-row">
+                        <span className="market-title">{market.groupItemTitle || "--"}</span>
+                        <span className="market-price">{market.price || "--"}</span>
+                        <div className="yes-no">
+                          <HoverButton market={market} outcome="Yes" />
+                          <HoverButton market={market} outcome="No" />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-      <GamenewListSlider
-        titles="Live/Upcoming"
-        handlegameName={handlegameName}
-        sportsStatusTab={sportsStatusTab}
-
-      />
+      <GamenewListSlider titles="Live/Upcoming" handlegameName={handlegameName} sportsStatusTab={sportsStatusTab} />
       {sportsStatusTab === "live" && (
         <LiveSportsCard
           gameName={gameName}
@@ -198,7 +206,6 @@ const Home = () => {
         />
       )}
       {/* <SportsCard /> */}
-
     </div>
   );
 };

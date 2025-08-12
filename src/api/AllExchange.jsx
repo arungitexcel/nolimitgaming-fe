@@ -1,18 +1,17 @@
+/** @format */
+
 import useSWR from "swr";
 import { PiBoxingGloveFill, PiCricketBold } from "react-icons/pi";
 import { BiSolidCricketBall } from "react-icons/bi";
 import { IoIosFootball } from "react-icons/io";
 import { FaTableTennis } from "react-icons/fa";
-import {
-  MdOutlineOnlinePrediction,
-  MdSportsKabaddi,
-  MdSportsMartialArts,
-} from "react-icons/md";
+import { MdOutlineOnlinePrediction, MdSportsKabaddi, MdSportsMartialArts } from "react-icons/md";
 import { CiBasketball } from "react-icons/ci";
 import { FaBaseball, FaPeopleGroup, FaConfluence } from "react-icons/fa6";
 import { TbOlympics, TbPlayVolleyball } from "react-icons/tb";
 import { FaCrown } from "react-icons/fa";
 import { fetchData } from "./ClientFunction";
+import { useLocation } from "react-router-dom";
 
 const games = [
   { name: "American Football", visibleName: "NFL", icon: <FaConfluence /> },
@@ -37,8 +36,10 @@ const games = [
 //     }));
 // };
 export const useAllSports = () => {
+  const location = useLocation();
+  const shouldFetch = location.pathname !== "/prediction";
   return {
-    ...useSWR("/sports/get-all-sports", fetchData),
+    ...useSWR(shouldFetch ? "/sports/get-all-sports" : null, fetchData),
   };
 };
 

@@ -7,8 +7,8 @@ const TagsContext = createContext();
 
 // Provider
 export const TagsProvider = ({ children }) => {
-  const [activePolymarketTab, setActivePolymarketTab] = useState("dating");
-  const [activeSlug, setActiveSlug] = useState("dating");
+  const [activePolymarketTab, setActivePolymarketTab] = useState("All");
+  const [activeSlug, setActiveSlug] = useState("all");
 
   const updateActiveTag = (label, slug) => {
     setActivePolymarketTab(label);

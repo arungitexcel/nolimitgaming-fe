@@ -505,6 +505,7 @@ export const ResponsiveSidebar = ({ handleClose }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { isLogin } = useAuth();
   const [activetab, setActivetab] = useState("Sportsbook");
+  const { activePolymarketTab, activeSlug, updateActiveTag } = useTags();
   const isPredictionRoute = location.pathname === "/prediction";
   useEffect(() => {
     if (location.pathname === "/prediction") {
@@ -520,6 +521,12 @@ export const ResponsiveSidebar = ({ handleClose }) => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const {
+    data: polymarketData,
+    error: polyError,
+    isLoading: polyLoading,
+  } = useSWR(isPredictionRoute ? "/sports/polymarket_tags" : null, fetchData);
 
   const handleTabSwitch = (tab) => {
     setActivetab(tab);
@@ -858,6 +865,30 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                 ) : null}
               </ul>
             </div>
+
+            {isPredictionRoute && (
+              <div className="polymarket-tags-list">
+                {polyLoading && (
+                  <div className="loader-center">
+                    <Loader />
+                  </div>
+                )}
+
+                {polymarketData &&
+                  Object.values(polymarketData).map((tag) => (
+                    <div
+                      key={tag.slug}
+                      className={`polymarket-tag-item ${activeSlug === tag.slug ? "active" : ""}`}
+                      onClick={() => {
+                        updateActiveTag(tag.label, tag.slug);
+                        handleClose();
+                      }}
+                    >
+                      {tag.label}
+                    </div>
+                  ))}
+              </div>
+            )}
 
             {/* AI Advisory */}
             <div className="ai-dropdown" onClick={aiAdvisaryOpen}>

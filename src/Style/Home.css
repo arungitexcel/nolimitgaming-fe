@@ -12,6 +12,9 @@
     grid-template-columns: 1fr;
     margin-top: 35px;
   }
+  .card-header {
+    margin-bottom: 40px;
+  }
 }
 
 .loader-container {
@@ -49,6 +52,7 @@
   align-items: center;
   gap: 10px;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .card-header img {

@@ -1,7 +1,7 @@
 // api/ClientFunction.jsx
 import axios from "axios";
 import { toast } from "react-toastify";
-import { BASE_API_URL, CLIENT_URL } from "./constant";
+import { BASE_API_URL, CLIENT_URL, KYC_API_URL } from "./constant";
 import { encryptData } from "../utils/Encrypt";
 import { decryptData } from "../utils/Decrypt";
 
@@ -116,6 +116,40 @@ export const updateData = (url, data) => handleRequest("put", url, data);
 export const deleteData = (url, data) => handleRequest("delete", url, data);
 export const requestData = (method, url, data) =>
   handleRequest(method, url, data);
+
+// KYC API (nolimitgamingKYC - no encryption)
+const kycApi = axios.create({
+  baseURL: KYC_API_URL,
+});
+
+export const fetchKycStatus = async (userId) => {
+  try {
+    const response = await kycApi.get("/kyc/status", {
+      params: { userId },
+    });
+    return response?.data?.data ?? null;
+  } catch (error) {
+    if (error?.response?.status === 404) return null;
+    toast.error(error?.response?.data?.message || "Failed to fetch KYC status");
+    return null;
+  }
+};
+
+export const submitKyc = async (formData) => {
+  try {
+    const response = await kycApi.post("/kyc/submit", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return response?.data ?? null;
+  } catch (error) {
+    const msg =
+      error?.response?.data?.message ||
+      error?.response?.data?.error ||
+      "Failed to submit KYC";
+    toast.error(msg);
+    return null;
+  }
+};
 
 // Utility functions
 export function generateTransactionId(phoneNumber) {

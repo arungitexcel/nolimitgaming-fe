@@ -1,0 +1,143 @@
+.kyc-verify-overlay {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+.kyc-verify-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--header-bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 1.5rem;
+}
+
+.kyc-verify-section {
+  width: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.kyc-verify-header {
+  margin-bottom: 1.5rem;
+}
+
+.kyc-verify-header h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--buttons-text-color);
+  margin: 0 0 0.5rem 0;
+}
+
+.kyc-verify-header .cancel-icon {
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  background-color: #323738;
+  padding: 0.5rem;
+  display: flex;
+  border-radius: 4px;
+}
+
+.kyc-verify-header p {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.kyc-verify-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.kyc-verify-form .form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.kyc-verify-form .form-group input[type="text"],
+.kyc-verify-form .form-group input[type="date"],
+.kyc-verify-form .form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  color: var(--text-color);
+}
+
+.kyc-verify-form .form-group input[type="file"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px dashed #555;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.kyc-verify-form .form-group input[type="file"]::file-selector-button {
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--buttons-bg-color);
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.kyc-verify-form .file-group .file-name {
+  display: block;
+  font-size: 0.8rem;
+  color: #22c55e;
+  margin-top: 0.4rem;
+}
+
+.kyc-verify-form .error {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.3rem;
+}
+
+.kyc-file-uploads {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #333;
+}
+
+.kyc-submit-btn {
+  width: 100%;
+  background-image: var(--buttons-bg-color);
+  color: #000;
+  font-weight: 700;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.kyc-submit-btn:hover {
+  opacity: 0.95;
+}
+
+@media (max-width: 600px) {
+  .kyc-verify-container {
+    max-width: 100%;
+  }
+
+  .kyc-verify-section {
+    padding: 1rem;
+  }
+}

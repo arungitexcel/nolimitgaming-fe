@@ -31,7 +31,82 @@
   text-align: center;
   position: relative;
   min-height: 35vh;
+}
 
+.kyc-card {
+  min-height: auto !important;
+}
+
+.kyc-status-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.kyc-loading {
+  color: #888;
+  margin: 0;
+}
+
+.kyc-status-badge {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.kyc-status-approve {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.kyc-status-reject {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.kyc-status-pending {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+.kyc-status-reviewing {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.kyc-reviewing-note {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0;
+  text-align: center;
+}
+
+.kyc-rejection-reason {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+  max-width: 90%;
+}
+
+.kyc-verify-btn {
+  background-image: var(--buttons-bg-color);
+  color: #000;
+  font-weight: 700;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.kyc-verify-btn:hover {
+  opacity: 0.9;
 }
 
 .like-section {

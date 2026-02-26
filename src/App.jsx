@@ -17,6 +17,7 @@ import { ResponsiveChatAI } from "./components/ChatboxModal/ChatboxModal";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import LandingPage from "./Pages/LandingPage";
 import Profile from "./Pages/Profile";
+import KycVerify from "./Pages/KycVerify";
 import BonusHistory from "./Pages/BonusHistory";
 import BetHistory from "./Pages/BetHistory";
 import CoinHistory from "./Pages/CoinHistory";
@@ -47,6 +48,7 @@ function App() {
             <Route path="/exchange_details" element={<ExchangeOddDetails />} />
             <Route path="/resChatAI" element={<ResponsiveChatAI />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/kyc-verify" element={<KycVerify />} />
             <Route path="/bonushistory" element={<BonusHistory />} />
             <Route path="/bethistory" element={<BetHistory />} />{" "}
             <Route path="/coinhistory" element={<CoinHistory />} />{" "}

@@ -52,15 +52,37 @@ const validationSchema = Yup.object().shape({
     .required("ID number is required"),
 });
 
+/** Normalize DOB to YYYY-MM-DD for API and date input (type="date"). */
+function normalizeDateToYYYYMMDD(value) {
+  if (!value || typeof value !== "string") return "";
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+  if (/^\d{4}-\d{2}-\d{2}/.test(trimmed)) return trimmed.slice(0, 10);
+  const iso = new Date(trimmed);
+  if (!Number.isNaN(iso.getTime())) {
+    const y = iso.getFullYear();
+    const m = String(iso.getMonth() + 1).padStart(2, "0");
+    const d = String(iso.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  }
+  const dmy = trimmed.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+  if (dmy) {
+    const [, day, month, year] = dmy;
+    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  }
+  return trimmed;
+}
+
 const KycVerify = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [files, setFiles] = useState({});
+  const [submitting, setSubmitting] = useState(false);
 
   const initialValues = {
     documentType: "aadhaar",
     fullName: user ? `${user.firstname || ""} ${user.lastname || ""}`.trim() : "",
-    dateOfBirth: user?.dob || "",
+    dateOfBirth: normalizeDateToYYYYMMDD(user?.dob ?? ""),
     idNumber: "",
   };
 
@@ -87,17 +109,25 @@ const KycVerify = () => {
     formData.append("userId", user._id);
     formData.append("documentType", values.documentType);
     formData.append("fullName", values.fullName);
-    formData.append("dateOfBirth", values.dateOfBirth);
+    formData.append(
+      "dateOfBirth",
+      values.dateOfBirth ? normalizeDateToYYYYMMDD(String(values.dateOfBirth)) : ""
+    );
     formData.append("idNumber", values.idNumber);
 
     requiredFiles.forEach((f) => {
       if (files[f.name]) formData.append(f.name, files[f.name]);
     });
 
-    const result = await submitKyc(formData);
-    if (result?.status === "success") {
-      toast.success("KYC submitted successfully");
-      navigate("/profile");
+    setSubmitting(true);
+    try {
+      const result = await submitKyc(formData);
+      if (result?.status === "success") {
+        toast.success("KYC submitted successfully");
+        navigate("/profile");
+      }
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -194,8 +224,12 @@ const KycVerify = () => {
                   )}
                 </div>
 
-                <button type="submit" className="kyc-submit-btn">
-                  Submit KYC
+                <button
+                  type="submit"
+                  className="kyc-submit-btn"
+                  disabled={submitting}
+                >
+                  {submitting ? "Submitting..." : "Submit KYC"}
                 </button>
               </Form>
             )}

@@ -98,12 +98,7 @@ const Home = () => {
     setGameName(gname);
     setGameId(id);
   };
-  const polymarketArray =
-    polymarketData && typeof polymarketData === "object"
-      ? Object.entries(polymarketData)
-          .filter(([key]) => !isNaN(key))
-          .map(([, value]) => value)
-      : [];
+  const polymarketArray = Array.isArray(polymarketData?.data) ? polymarketData.data : [];
 
   if (isPredictionView && polyLoading) {
     return (

@@ -14,7 +14,7 @@ const DropDown = ({ handleMenu, showMenu }) => {
   const { setUser, setIsLogin } = useAuth();
 
   const menuOptions = [
-    { option: "  My Profie", icon: <FaUserCircle />, route: "/profile" },
+    { option: "  My Profile", icon: <FaUserCircle />, route: "/profile" },
     { option: "Refer & Earn", icon: <FiGift />, route: "/referearn" },
     // { option: "Bet History", icon: <DiOpenshift /> , route: "/bethistory"},
     {

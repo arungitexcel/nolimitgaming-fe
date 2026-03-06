@@ -465,8 +465,8 @@ export const Sidebar = ({ handlePopup }) => {
               <p style={{ color: "red" }}>Failed to load tags</p>
             ) : (
               <div className="polymarket-tags-list">
-                {Object.values(tagsData || {})
-                  .filter((tag) => tag?.label && tag?.slug) // remove empty ones
+                {(Array.isArray(tagsData?.data) ? tagsData.data : [])
+                  .filter((tag) => tag?.label && tag?.slug)
                   .map((tag) => (
                     <div
                       key={tag.slug}
@@ -498,6 +498,7 @@ export const Sidebar = ({ handlePopup }) => {
 };
 
 export const ResponsiveSidebar = ({ handleClose }) => {
+  const location = useLocation();
   const { user } = useAuth();
   const { setActiveGameId, activeGameId } = useTab();
   const { handleNavRoute, liveUpcome, setIsPredictionView } = useNavRoute();
@@ -874,19 +875,18 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                   </div>
                 )}
 
-                {polymarketData &&
-                  Object.values(polymarketData).map((tag) => (
-                    <div
-                      key={tag.slug}
-                      className={`polymarket-tag-item ${activeSlug === tag.slug ? "active" : ""}`}
-                      onClick={() => {
-                        updateActiveTag(tag.label, tag.slug);
-                        handleClose();
-                      }}
-                    >
-                      {tag.label}
-                    </div>
-                  ))}
+                {(Array.isArray(polymarketData?.data) ? polymarketData.data : []).map((tag) => (
+                  <div
+                    key={tag.slug}
+                    className={`polymarket-tag-item ${activeSlug === tag.slug ? "active" : ""}`}
+                    onClick={() => {
+                      updateActiveTag(tag.label, tag.slug);
+                      handleClose();
+                    }}
+                  >
+                    {tag.label}
+                  </div>
+                ))}
               </div>
             )}
 

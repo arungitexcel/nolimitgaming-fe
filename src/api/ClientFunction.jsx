@@ -15,6 +15,13 @@ if (!baseURL) {
 const api = axios.create({
   baseURL: baseURL,
 });
+// Skip ngrok browser warning when backend is behind ngrok
+api.interceptors.request.use((config) => {
+  if (baseURL && baseURL.includes("ngrok")) {
+    config.headers["ngrok-skip-browser-warning"] = "true";
+  }
+  return config;
+});
 
 const handleRequest = async (method, url, data = null, customHeaders = {}) => {
   const token = localStorage.getItem("token");
@@ -137,9 +144,7 @@ export const fetchKycStatus = async (userId) => {
 
 export const submitKyc = async (formData) => {
   try {
-    const response = await kycApi.post("/kyc/submit", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const response = await kycApi.post("/kyc/submit", formData);
     return response?.data ?? null;
   } catch (error) {
     const msg =

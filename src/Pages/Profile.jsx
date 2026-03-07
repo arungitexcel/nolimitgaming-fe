@@ -33,15 +33,12 @@ const Profile = () => {
     !kycData || kycLoading
       ? "pending"
       : kycData.status === "approved"
-        ? "approve"
+        ? "approved"
         : kycData.status === "rejected"
-          ? "reject"
+          ? "rejected"
           : kycData.status === "submitted" || kycData.status === "pending_review"
             ? "reviewing"
             : "pending";
-
-  const showVerifyButton =
-    kycStatus !== "approve" && kycStatus !== "reviewing";
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
@@ -134,38 +131,37 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="card kyc-card">
+      <div className="card kyc-status-card">
         <h3>KYC Verification</h3>
         <div className="kyc-status-section">
           {kycLoading ? (
-            <p className="kyc-loading">Loading...</p>
+            <p className="kyc-status-loading">Loading...</p>
           ) : (
             <>
               <div
                 className={`kyc-status-badge kyc-status-${kycStatus}`}
                 title={kycData?.rejectionReason}
               >
-                {kycStatus === "approve" && "Verified"}
-                {kycStatus === "reject" && "Rejected"}
+                {kycStatus === "approved" && "Verified"}
+                {kycStatus === "rejected" && "Rejected"}
                 {kycStatus === "reviewing" && "Under Review"}
-                {(kycStatus === "pending" || !kycData) &&
-                  "Verification Pending"}
+                {(kycStatus === "pending" || !kycData) && "Verification Pending"}
               </div>
-              {kycStatus === "reject" && kycData?.rejectionReason && (
-                <p className="kyc-rejection-reason">{kycData.rejectionReason}</p>
-              )}
               {kycStatus === "reviewing" && (
-                <p className="kyc-reviewing-note">
-                  We are reviewing your document. We will let you know once the
-                  verification is complete.
+                <p className="kyc-status-message">
+                  Our admin is reviewing your document. We will notify you once
+                  the verification is complete.
                 </p>
               )}
-              {showVerifyButton && (
+              {kycStatus === "rejected" && kycData?.rejectionReason && (
+                <p className="kyc-rejection-reason">{kycData.rejectionReason}</p>
+              )}
+              {(kycStatus === "pending" || kycStatus === "rejected") && (
                 <button
                   className="kyc-verify-btn"
                   onClick={() => navigate("/kyc-verify")}
                 >
-                  {kycStatus === "reject" ? "Resubmit KYC" : "Verify KYC"}
+                  {kycStatus === "rejected" ? "Resubmit KYC" : "Verify KYC"}
                 </button>
               )}
             </>

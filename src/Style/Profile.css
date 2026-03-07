@@ -33,7 +33,7 @@
   min-height: 35vh;
 }
 
-.kyc-card {
+.kyc-status-card {
   min-height: auto !important;
 }
 
@@ -45,7 +45,7 @@
   padding: 16px 0;
 }
 
-.kyc-loading {
+.kyc-status-loading {
   color: #888;
   margin: 0;
 }
@@ -57,12 +57,12 @@
   font-size: 14px;
 }
 
-.kyc-status-approve {
+.kyc-status-approved {
   background-color: rgba(34, 197, 94, 0.2);
   color: #22c55e;
 }
 
-.kyc-status-reject {
+.kyc-status-rejected {
   background-color: rgba(239, 68, 68, 0.2);
   color: #ef4444;
 }
@@ -75,16 +75,14 @@
 .kyc-status-reviewing {
   background-color: rgba(59, 130, 246, 0.2);
   color: #3b82f6;
-  max-width: 100%;
-  text-align: center;
-  line-height: 1.4;
 }
 
-.kyc-reviewing-note {
-  font-size: 0.85rem;
+.kyc-status-message {
+  font-size: 0.9rem;
   color: #94a3b8;
   margin: 0;
   text-align: center;
+  max-width: 90%;
 }
 
 .kyc-rejection-reason {

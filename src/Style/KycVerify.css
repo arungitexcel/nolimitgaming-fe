@@ -9,7 +9,7 @@
 
 .kyc-verify-container {
   width: 100%;
-  max-width: 500px;
+  max-width: 900px;
   background-color: var(--header-bg-color);
   border-radius: 10px;
   overflow: hidden;
@@ -45,7 +45,8 @@
   border-radius: 4px;
 }
 
-.kyc-verify-header p {
+.kyc-verify-header p,
+.kyc-verify-instruction {
   font-size: 0.9rem;
   color: #aaa;
   margin: 0;
@@ -115,6 +116,38 @@
   border-top: 1px solid #333;
 }
 
+.kyc-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.kyc-upload-block {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.kyc-upload-block label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.kyc-upload-sublabel {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+
+.kyc-verify-form > .error {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin: 0 0 1rem 0;
+}
+
 .kyc-submit-btn {
   width: 100%;
   background-image: var(--buttons-bg-color);
@@ -132,6 +165,39 @@
   opacity: 0.95;
 }
 
+.kyc-status-loading {
+  color: #aaa;
+  margin: 0;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.kyc-under-review-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+
+.kyc-under-review-badge {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.kyc-under-review-message {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.5;
+}
+
 @media (max-width: 600px) {
   .kyc-verify-container {
     max-width: 100%;
@@ -139,5 +205,9 @@
 
   .kyc-verify-section {
     padding: 1rem;
+  }
+
+  .kyc-upload-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -6,7 +6,7 @@ import { RiFolderHistoryFill } from "react-icons/ri";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { DiOpenshift } from "react-icons/di";
 import { RiExchangeLine } from "react-icons/ri";
-import { AiOutlineLogout } from "react-icons/ai";
+import { AiOutlineLogout, AiOutlineSafetyCertificate } from "react-icons/ai";
 import { FiGift } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -15,6 +15,11 @@ const DropDown = ({ handleMenu, showMenu }) => {
 
   const menuOptions = [
     { option: "  My Profile", icon: <FaUserCircle />, route: "/profile" },
+    {
+      option: "KYC Verification",
+      icon: <AiOutlineSafetyCertificate />,
+      route: "/kyc-verify",
+    },
     { option: "Refer & Earn", icon: <FiGift />, route: "/referearn" },
     // { option: "Bet History", icon: <DiOpenshift /> , route: "/bethistory"},
     {

@@ -326,6 +326,10 @@ export const Sidebar = ({ handlePopup }) => {
           >
             <p>Balance</p>
             <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p>
+            <p style={{ fontSize: "12px", opacity: 0.9 }}>Play Chips</p>
+            <p style={{ fontWeight: "600" }}>
+              {user?.playChips ? Number(user.playChips).toFixed(2) : "00.00"}
+            </p>
           </div>
           <p className="sidebar-item-arrow">
             <IoIosArrowForward />
@@ -801,6 +805,10 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                 >
                   <p>Balance</p>
                   <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p>
+                  <p style={{ fontSize: "12px", opacity: 0.9 }}>Play Chips</p>
+                  <p style={{ fontWeight: "600" }}>
+                    {user?.playChips ? Number(user.playChips).toFixed(2) : "00.00"}
+                  </p>
                 </div>
               </div>
               <p className="responsive-sidebar-item-arrow">

@@ -41,9 +41,15 @@ const handleRequest = async (method, url, data = null, customHeaders = {}) => {
     const decryptedData = decryptData(response?.data?.data);
     return decryptedData;
   } catch (error) {
-    const errorData = error?.response?.data?.data
-      ? decryptData(error?.response?.data?.data)
-      : {};
+    const errorData =
+      error?.response?.data?.data
+        ? decryptData(error?.response?.data?.data)
+        : {
+            message:
+              error?.response?.data?.message ||
+              error?.response?.data?.error ||
+              "Something went wrong",
+          };
 
     if (
       errorData?.message === "Login Error" ||
@@ -52,12 +58,16 @@ const handleRequest = async (method, url, data = null, customHeaders = {}) => {
       window.location.href = CLIENT_URL; // Consider using useNavigate() if in React
     }
 
-    if (errorData?.message("No Match Found")) {
+    if (errorData?.message === "No Match Found") {
       return errorData;
     }
 
     if (!errorData?.success && errorData?.message) {
-      toast.error(errorData.message || "Something went wrong in API calling");
+      toast.error(
+        typeof errorData.message === "string"
+          ? errorData.message
+          : "Something went wrong in API calling"
+      );
     }
 
     return errorData;
@@ -85,13 +95,21 @@ const handleNormalRequest = async (
     const decryptedData = decryptData(response?.data?.data);
     return decryptedData;
   } catch (error) {
-    const decryptedData = decryptData(error?.response?.data?.data);
+    const decryptedData = error?.response?.data?.data
+      ? decryptData(error.response.data.data)
+      : {
+          success: false,
+          message:
+            error?.response?.data?.message ||
+            error?.response?.data?.error ||
+            "Something went wrong",
+        };
     console.log(decryptedData);
     if (
-      decryptedData.message === "Login Error" ||
-      decryptedData.message === "User Not Persent in DataBase" ||
-      decryptedData.message === "Invalid UserId" ||
-      decryptedData.message === "Token Not persent In headers"
+      decryptedData?.message === "Login Error" ||
+      decryptedData?.message === "User Not Persent in DataBase" ||
+      decryptedData?.message === "Invalid UserId" ||
+      decryptedData?.message === "Token Not persent In headers"
     ) {
       window.location.href = CLIENT_URL;
       return;
@@ -101,7 +119,7 @@ const handleNormalRequest = async (
       decryptedData?.message?.endsWith("already taken.") ||
       decryptedData?.message?.endsWith("Invalid Invite Code.") ||
       decryptedData?.message?.endsWith("Setting Not Found") ||
-      decryptedData?.message("No Match Found")
+      decryptedData?.message === "No Match Found"
     ) {
       return decryptedData;
     }

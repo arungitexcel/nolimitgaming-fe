@@ -40,7 +40,7 @@ import { useTags } from "../../context/TagsContext";
 
 export const Sidebar = ({ handlePopup }) => {
   const { user } = useAuth();
-  const { setActiveGameId, setActiveTab, activeGameId } = useTab();
+  const { setActiveGameId, setActiveTab, activeGameId, setActiveLeagueId, activeLeagueId } = useTab();
   const { handleNavRoute, liveUpcome, setIsPredictionView } = useNavRoute();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -94,9 +94,10 @@ export const Sidebar = ({ handlePopup }) => {
     navigate(tab === "Book" ? "/" : "/exchange");
   };
 
-  const handleSportsNav = (name, sportId) => {
+  const handleSportsNav = (name, sportId, leagueId) => {
     setActiveTab(name);
     setActiveGameId(sportId);
+    setActiveLeagueId(leagueId ?? null);
     if (location.pathname != "/home" && location.pathname != "/signin" && location.pathname != "/exchange") {
       navigate("/home");
     }
@@ -230,81 +231,36 @@ export const Sidebar = ({ handlePopup }) => {
   // const filteredExchSport = activeExchSport
   //   .filter((game) => game?.data?.data?.length > 0)
   //   .map((game) => game?.visibleName);
+  // SX.bet: Basketball sportId=1; NBA leagueId=1, NCAA leagueId=2 (see api.docs.sx.bet)
   const exchnageItems = [
-    {
-      name: "Basketball",
-      visibleName: "NBA",
-      icon: <CiBasketball />,
-      sportId: 1,
-    }, // National Basketball Association
-    // { name: "Ice Hockey", visibleName: "NHL", icon: <FaPeopleGroup /> },
-    // {
-    //   name: "Mixed Martial Arts",
-    //   visibleName: "MMA",
-    //   icon: <MdSportsMartialArts />,
-    // },
-    // { name: "Boxing", visibleName: "Boxing", icon: <PiBoxingGloveFill /> },
-    {
-      name: "Baseball",
-      visibleName: "Baseball",
-      icon: <FaBaseball />,
-      sportId: 3,
-    },
-    {
-      name: "Tennis",
-      visibleName: "Tennis",
-      icon: <FaTableTennis />,
-      sportId: 6,
-    },
-    {
-      name: "Cricket",
-      visibleName: "Cricket",
-      icon: <PiCricketBold />,
-      sportId: 15,
-    },
-    {
-      name: "Soccer",
-      visibleName: "Football",
-      icon: <PiSoccerBall />,
-      sportId: 5,
-    },
-    {
-      name: "Mixed Martial Arts",
-      visibleName: "Mixed Martial Arts",
-      icon: <GiBoxingGlove />,
-      sportId: 7,
-    },
-    {
-      name: "Rugby League",
-      visibleName: "Rugby League",
-      icon: <IoIosAmericanFootball />,
-      sportId: 20,
-    },
-    {
-      name: "AFL",
-      visibleName: "AFL",
-      icon: <CiBasketball />,
-      sportId: 26,
-    },
-    {
-      name: "Crypto",
-      visibleName: "Crypto",
-      icon: <GiSoccerBall />,
-      sportId: 14,
-    },
+    { name: "Basketball", visibleName: "NBA", icon: <CiBasketball />, sportId: 1, leagueId: 1 },
+    { name: "Basketball", visibleName: "NCAA", icon: <CiBasketball />, sportId: 1, leagueId: 2 },
+    { name: "Baseball", visibleName: "Baseball", icon: <FaBaseball />, sportId: 3 },
+    { name: "Tennis", visibleName: "Tennis", icon: <FaTableTennis />, sportId: 6 },
+    { name: "Cricket", visibleName: "Cricket", icon: <PiCricketBold />, sportId: 15 },
+    { name: "Soccer", visibleName: "Football", icon: <PiSoccerBall />, sportId: 5 },
+    { name: "Mixed Martial Arts", visibleName: "Mixed Martial Arts", icon: <GiBoxingGlove />, sportId: 7 },
+    { name: "Rugby League", visibleName: "Rugby League", icon: <IoIosAmericanFootball />, sportId: 20 },
+    { name: "AFL", visibleName: "AFL", icon: <CiBasketball />, sportId: 26 },
+    { name: "Crypto", visibleName: "Crypto", icon: <GiSoccerBall />, sportId: 14 },
   ];
   const { data, isLoading } = useAllSports();
   const allSportData = data?.data || [];
   const filteredAllSports = allSportData
-    .filter((sport) => exchnageItems.some((item) => item.sportId === sport.sportId))
+    .filter((sport) => exchnageItems.some((item) => item.sportId === sport.sportId && item.leagueId == null))
     .map((sport) => {
-      const matched = exchnageItems.find((item) => item.sportId === sport.sportId);
+      const matched = exchnageItems.find((item) => item.sportId === sport.sportId && item.leagueId == null);
       return {
         ...sport,
         label: matched?.visibleName || sport.name,
         icon: matched?.icon || null,
       };
     });
+  // Exchange tab: show NBA + NCAA + other sports (one row per exchnageItems entry)
+  const exchangeList = exchnageItems.map((item) => ({
+    ...item,
+    label: item.visibleName,
+  }));
 
   // const exchActiveName = exchnageItems.filter((game) =>
   //   filteredExchSport.includes(game.visibleName)
@@ -364,14 +320,18 @@ export const Sidebar = ({ handlePopup }) => {
             {isLoading ? (
               <Loader />
             ) : (
-              (activetab === "Book" ? sportsActiveName : activetab === "Exchange" ? filteredAllSports : []).map(
+              (activetab === "Book" ? sportsActiveName : activetab === "Exchange" ? exchangeList : []).map(
                 (item) => (
                   <li
-                    key={item.sportId}
+                    key={item.leagueId != null ? `${item.sportId}-${item.leagueId}` : item.sportId}
                     onClick={() => {
-                      handleSportsNav(item.label, item.sportId);
+                      handleSportsNav(item.label, item.sportId, item.leagueId);
                     }}
-                    className={item.sportId === activeGameId ? "active-sport-tab" : ""}
+                    className={
+                      item.sportId === activeGameId && (item.leagueId ?? null) === activeLeagueId
+                        ? "active-sport-tab"
+                        : ""
+                    }
                   >
                     <span style={{ fontSize: "1.2rem" }}>{item.icon}</span>
                     {item.label}
@@ -504,7 +464,7 @@ export const Sidebar = ({ handlePopup }) => {
 export const ResponsiveSidebar = ({ handleClose }) => {
   const location = useLocation();
   const { user } = useAuth();
-  const { setActiveGameId, activeGameId } = useTab();
+  const { setActiveGameId, activeGameId, setActiveLeagueId, activeLeagueId } = useTab();
   const { handleNavRoute, liveUpcome, setIsPredictionView } = useNavRoute();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -567,11 +527,10 @@ export const ResponsiveSidebar = ({ handleClose }) => {
       navigate("/exchange");
     }
   };
-  const handleTabExchangeChange = (route, sportId) => {
+  const handleTabExchangeChange = (route, sportId, leagueId) => {
     setActiveGameId(sportId);
-    // (route);
+    setActiveLeagueId(leagueId ?? null);
     handleNavRoute(route);
-
     handleClose();
   };
 
@@ -698,89 +657,23 @@ export const ResponsiveSidebar = ({ handleClose }) => {
   // );
   // console.log(sportsActiveName);
 
+  // SX.bet: Basketball sportId=1; NBA leagueId=1, NCAA leagueId=2 (see api.docs.sx.bet)
   const exchnageItems = [
-    {
-      name: "Basketball",
-      visibleName: "NBA",
-      icon: <CiBasketball />,
-      sportId: 1,
-    }, // National Basketball Association
-    // { name: "Ice Hockey", visibleName: "NHL", icon: <FaPeopleGroup /> },
-    // {
-    //   name: "Mixed Martial Arts",
-    //   visibleName: "MMA",
-    //   icon: <MdSportsMartialArts />,
-    // },
-    // { name: "Boxing", visibleName: "Boxing", icon: <PiBoxingGloveFill /> },
-    {
-      name: "Baseball",
-      visibleName: "Baseball",
-      icon: <FaBaseball />,
-      sportId: 3,
-    },
-    {
-      name: "Tennis",
-      visibleName: "Tennis",
-      icon: <FaTableTennis />,
-      sportId: 6,
-    },
-    {
-      name: "Cricket",
-      visibleName: "Cricket",
-      icon: <PiCricketBold />,
-      sportId: 15,
-    },
-    {
-      name: "Soccer",
-      visibleName: "Football",
-      icon: <PiSoccerBall />,
-      sportId: 5,
-    },
-    {
-      name: "Mixed Martial Arts",
-      visibleName: "Mixed Martial Arts",
-      icon: <GiBoxingGlove />,
-      sportId: 7,
-    },
-    {
-      name: "Rugby League",
-      visibleName: "Rugby League",
-      icon: <IoIosAmericanFootball />,
-      sportId: 20,
-    },
-    {
-      name: "AFL",
-      visibleName: "AFL",
-      icon: <CiBasketball />,
-      sportId: 26,
-    },
-    {
-      name: "Crypto",
-      visibleName: "Crypto",
-      icon: <GiSoccerBall />,
-      sportId: 14,
-    },
+    { name: "Basketball", visibleName: "NBA", icon: <CiBasketball />, sportId: 1, leagueId: 1 },
+    { name: "Basketball", visibleName: "NCAA", icon: <CiBasketball />, sportId: 1, leagueId: 2 },
+    { name: "Baseball", visibleName: "Baseball", icon: <FaBaseball />, sportId: 3 },
+    { name: "Tennis", visibleName: "Tennis", icon: <FaTableTennis />, sportId: 6 },
+    { name: "Cricket", visibleName: "Cricket", icon: <PiCricketBold />, sportId: 15 },
+    { name: "Soccer", visibleName: "Football", icon: <PiSoccerBall />, sportId: 5 },
+    { name: "Mixed Martial Arts", visibleName: "Mixed Martial Arts", icon: <GiBoxingGlove />, sportId: 7 },
+    { name: "Rugby League", visibleName: "Rugby League", icon: <IoIosAmericanFootball />, sportId: 20 },
+    { name: "AFL", visibleName: "AFL", icon: <CiBasketball />, sportId: 26 },
+    { name: "Crypto", visibleName: "Crypto", icon: <GiSoccerBall />, sportId: 14 },
   ];
-
-  // const activeExchSport = useMultipleExchSport();
-  // const filteredExchSport = activeExchSport
-  //   .filter((game) => game?.data?.data?.length > 0)
-  //   .map((game) => game?.visibleName);
-  // const exchActiveName = exchnageItems.filter((game) =>
-  //   filteredExchSport.includes(game.visibleName)
-  // );
-  const all_sports = useAllSports();
-  const allSportData = all_sports?.data?.data || [];
-  const filteredAllSports = allSportData
-    .filter((sport) => exchnageItems.some((item) => item.sportId === sport.sportId))
-    .map((sport) => {
-      const matched = exchnageItems.find((item) => item.sportId === sport.sportId);
-      return {
-        ...sport,
-        label: matched?.visibleName || sport.name,
-        icon: matched?.icon || null,
-      };
-    });
+  const exchangeList = exchnageItems.map((item) => ({
+    ...item,
+    label: item.visibleName,
+  }));
   return (
     <div className="responsive-sidebar">
       {/* <div className="responsive-sidebar-header">
@@ -860,11 +753,15 @@ export const ResponsiveSidebar = ({ handleClose }) => {
 
                 {activetab === "Exchange" ? (
                   <>
-                    {filteredAllSports.map((item) => (
+                    {exchangeList.map((item) => (
                       <li
-                        key={item.label}
-                        onClick={() => handleTabExchangeChange(item.name, item.sportId)}
-                        className={item.sportId === activeGameId ? "active-sport-tab" : ""}
+                        key={item.leagueId != null ? `${item.sportId}-${item.leagueId}` : item.sportId}
+                        onClick={() => handleTabExchangeChange(item.name, item.sportId, item.leagueId)}
+                        className={
+                          item.sportId === activeGameId && (item.leagueId ?? null) === activeLeagueId
+                            ? "active-sport-tab"
+                            : ""
+                        }
                       >
                         <span style={{ fontSize: "1.2rem" }}>{item.icon}</span>
                         {activetab === "Book" ? item.label : `${item.label}`}{" "}

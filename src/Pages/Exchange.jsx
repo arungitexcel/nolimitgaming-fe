@@ -13,7 +13,7 @@ const Exchange = () => {
   const [sportsData, setSportsData] = useState([]);
 
   const [game, setgame] = useState("NFL");
-  const { activeGameId } = useTab();
+  const { activeGameId, activeLeagueId } = useTab();
 
   const handlegameName = (gname) => {
     setGametype(gname);
@@ -23,12 +23,13 @@ const Exchange = () => {
     setgame(game);
   };
 
-  const { data, error, isLoading } = useSWR(
-    activeGameId
-      ? activeGameId == 3 ? `/sports/get-mlb-market` : `/sports/get-active-market?sportIds=${activeGameId}&pageSize=50`
-      : null,
-    fetchData
-  );
+  const marketUrl =
+    activeGameId == null
+      ? null
+      : activeGameId === 3
+        ? "/sports/get-mlb-market"
+        : `/sports/get-active-market?sportIds=${activeGameId}&pageSize=50${activeLeagueId != null ? `&leagueId=${activeLeagueId}` : ""}`;
+  const { data, error, isLoading } = useSWR(activeGameId != null ? marketUrl : null, fetchData);
 
   useEffect(() => {
     if (data) {

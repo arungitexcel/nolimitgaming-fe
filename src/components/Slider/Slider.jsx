@@ -19,33 +19,33 @@ import mslide3 from "../../assets/slides/sm3.jpg";
 const Slider = ({ handleOpenLogin }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 500);
   const slides = [
-    { image: slide1 },
-    { image: slide2 },
-    { image: slide3 },
-    { image: slide4 },
-    { image: slide5 },
-    { image: slide6 },
-    { image: slide7 },
-    { image: slide8 },
-    { image: slide9 },
-    { image: slide10 },
-    { image: slide11 },
-    { image: slide12 },
+    { image: slide1 }, // NLC banner only - client: "remove all banners except NLC banner"
+    // { image: slide2 },
+    // { image: slide3 },
+    // { image: slide4 },
+    // { image: slide5 },
+    // { image: slide6 },
+    // { image: slide7 },
+    // { image: slide8 },
+    // { image: slide9 },
+    // { image: slide10 },
+    // { image: slide11 },
+    // { image: slide12 },
   ];
 
   const mobileSliderImages = [
-    { image: slide1 },
-    { image: slide2 },
-    { image: slide3 },
-    { image: slide4 },
-    { image: slide5 },
-    { image: slide6 },
-    { image: slide7 },
-    { image: slide8 },
-    { image: slide9 },
-    { image: slide10 },
-    { image: slide11 },
-    { image: slide12 },
+    { image: slide1 }, // NLC banner only
+    // { image: slide2 },
+    // { image: slide3 },
+    // { image: slide4 },
+    // { image: slide5 },
+    // { image: slide6 },
+    // { image: slide7 },
+    // { image: slide8 },
+    // { image: slide9 },
+    // { image: slide10 },
+    // { image: slide11 },
+    // { image: slide12 },
   ];
 
   useEffect(() => {

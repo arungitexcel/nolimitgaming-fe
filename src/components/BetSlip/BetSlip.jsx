@@ -12,16 +12,19 @@ import { useNavRoute } from "../../context/navRoute";
 import { postData, postNormalData } from "../../api/ClientFunction";
 import { toast } from "react-toastify";
 import { mutate } from "swr";
+import { useAuth } from "../../context/AuthContext";
 
 export const BetSlip = () => {
   const { bets, removeBet, clearBets, openBetSlip, setOpenBetSlip } =
     useBetSlip();
   // console.log(bets);
   const { handleOpenLogin } = useNavRoute();
+  const { user } = useAuth();
 
   const [activeTab, setActiveTab] = useState("Single");
   const [betAmounts, setBetAmounts] = useState({}); // Object to hold bet amounts
   const [errorMessage, setErrorMessage] = useState("");
+  const [currency, setCurrency] = useState("cash"); // cash | play_chips
 
   const toggleShowBet = () => {
     setOpenBetSlip(!openBetSlip);
@@ -76,6 +79,7 @@ export const BetSlip = () => {
         eventId: bets?.eventId || "",
         marketType: marketData?.marketType || bets?.marketType || "",
         betOdd: selectedRunner?.backPrices?.[0]?.price || 0,
+        currency,
       },
     ];
 
@@ -83,6 +87,7 @@ export const BetSlip = () => {
 
     const response = await postData("/user/placebookbet", {
       bet: betObjects,
+      currency,
     });
     // console.log(response);
 
@@ -139,6 +144,58 @@ export const BetSlip = () => {
                 {tab}
               </div>
             ))}
+          </div>
+
+          {/* Currency toggle */}
+          <div
+            style={{
+              display: "flex",
+              gap: "8px",
+              padding: "10px",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <div style={{ display: "flex", gap: "8px" }}>
+              <button
+                type="button"
+                onClick={() => setCurrency("cash")}
+                style={{
+                  padding: "6px 10px",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  background: currency === "cash" ? "#2b2b2b" : "transparent",
+                  color: "white",
+                  cursor: "pointer",
+                }}
+              >
+                Cash
+              </button>
+              <button
+                type="button"
+                onClick={() => setCurrency("play_chips")}
+                style={{
+                  padding: "6px 10px",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  background:
+                    currency === "play_chips" ? "#2b2b2b" : "transparent",
+                  color: "white",
+                  cursor: "pointer",
+                }}
+              >
+                Play Chips
+              </button>
+            </div>
+            <div style={{ fontSize: "12px", opacity: 0.9 }}>
+              Available:{" "}
+              <span style={{ fontWeight: 700 }}>
+                {currency === "play_chips"
+                  ? Number(user?.playChips || 0).toFixed(2)
+                  : Number(user?.money || 0).toFixed(2)}
+              </span>
+            </div>
           </div>
 
           {/* Bet Place Data */}

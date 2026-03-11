@@ -7,12 +7,11 @@ const TabContext = createContext();
 export const TabProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState("Baseball");
   const [activeGameId, setActiveGameId] = useState(3);
-
-  // console.log(activeGameId)
+  const [activeLeagueId, setActiveLeagueId] = useState(null);
 
   return (
     <TabContext.Provider
-      value={{ activeTab, setActiveTab, activeGameId, setActiveGameId }}
+      value={{ activeTab, setActiveTab, activeGameId, setActiveGameId, activeLeagueId, setActiveLeagueId }}
     >
       {children}
     </TabContext.Provider>

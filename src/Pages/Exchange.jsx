@@ -28,7 +28,9 @@ const Exchange = () => {
       ? null
       : activeGameId === 3
         ? "/sports/get-mlb-market"
-        : `/sports/get-active-market?sportIds=${activeGameId}&pageSize=50${activeLeagueId != null ? `&leagueId=${activeLeagueId}` : ""}`;
+        : `/sports/get-active-market?sportIds=${encodeURIComponent(activeGameId)}&pageSize=50${
+            activeLeagueId != null ? `&leagueId=${encodeURIComponent(activeLeagueId)}` : ""
+          }`;
   const { data, error, isLoading } = useSWR(activeGameId != null ? marketUrl : null, fetchData);
 
   useEffect(() => {

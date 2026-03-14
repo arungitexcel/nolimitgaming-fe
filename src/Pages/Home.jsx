@@ -35,7 +35,6 @@ const Home = () => {
 
   const { handleClose, handleOpenLogin, handleOpenSignup, openLogin, openSignUp, setLiveUpcome, isPredictionView } =
     useNavRoute();
-  console.log("isPredictionView", isPredictionView);
 
   const POLYMARKET_KEY = `/sports/polymarket-events?slug=${activeSlug}`;
   const hideOnPrediction = location.pathname === "/prediction";
@@ -45,7 +44,6 @@ const Home = () => {
     error: polyError,
     isLoading: polyLoading,
   } = useSWR(isPredictionView && hideOnPrediction ? POLYMARKET_KEY : null, fetchData);
-  console.log("polymarketData", polymarketData);
 
   // Optional: refetch on each click if you want fresh data
   useEffect(() => {
@@ -53,7 +51,6 @@ const Home = () => {
       mutate(POLYMARKET_KEY); // refresh data
     }
   }, [isPredictionView]);
-  console.log("polymarketData", polymarketData);
   useEffect(() => {
     const activeTab = tabRefs.current.find((el) => el?.dataset.tab === sportsStatusTab);
     if (activeTab) {
@@ -98,7 +95,19 @@ const Home = () => {
     setGameName(gname);
     setGameId(id);
   };
-  const polymarketArray = Array.isArray(polymarketData?.data) ? polymarketData.data : [];
+  // API may return { data: [...] } or a spread object { 0: item, 1: item, ..., success, message }
+  const polymarketArray = (() => {
+    if (Array.isArray(polymarketData?.data)) return polymarketData.data;
+    if (polymarketData && typeof polymarketData === "object" && polymarketData.success) {
+      const keys = Object.keys(polymarketData).filter(
+        (k) => k !== "success" && k !== "message" && String(Number(k)) === k
+      );
+      if (keys.length) {
+        return keys.sort((a, b) => Number(a) - Number(b)).map((k) => polymarketData[k]);
+      }
+    }
+    return [];
+  })();
 
   if (isPredictionView && polyLoading) {
     return (

@@ -429,17 +429,34 @@ export const Sidebar = ({ handlePopup }) => {
               <p style={{ color: "red" }}>Failed to load tags</p>
             ) : (
               <div className="polymarket-tags-list">
-                {(Array.isArray(tagsData?.data) ? tagsData.data : [])
-                  .filter((tag) => tag?.label && tag?.slug)
-                  .map((tag) => (
-                    <div
-                      key={tag.slug}
-                      className={`polymarket-tag-item ${activePolymarketTab === tag.label ? "active" : "inactive"}`}
-                      onClick={() => updateActiveTag(tag.label, tag.slug)}
-                    >
-                      {tag.label}
-                    </div>
-                  ))}
+                {(() => {
+                  // API may return { data: [...] } or a spread object { 0: item, 1: item, ..., success, message }
+                  let tagsArray = [];
+                  if (Array.isArray(tagsData?.data)) {
+                    tagsArray = tagsData.data;
+                  } else if (tagsData && typeof tagsData === "object" && tagsData.success) {
+                    const keys = Object.keys(tagsData).filter(
+                      (k) => k !== "success" && k !== "message" && String(Number(k)) === k
+                    );
+                    if (keys.length) {
+                      tagsArray = keys.sort((a, b) => Number(a) - Number(b)).map((k) => tagsData[k]);
+                    }
+                  }
+
+                  return tagsArray
+                    .filter((tag) => tag?.label && tag?.slug)
+                    .map((tag) => (
+                      <div
+                        key={tag.slug}
+                        className={`polymarket-tag-item ${
+                          activePolymarketTab === tag.label ? "active" : "inactive"
+                        }`}
+                        onClick={() => updateActiveTag(tag.label, tag.slug)}
+                      >
+                        {tag.label}
+                      </div>
+                    ));
+                })()}
               </div>
             )}
           </div>
@@ -780,18 +797,33 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                   </div>
                 )}
 
-                {(Array.isArray(polymarketData?.data) ? polymarketData.data : []).map((tag) => (
-                  <div
-                    key={tag.slug}
-                    className={`polymarket-tag-item ${activeSlug === tag.slug ? "active" : ""}`}
-                    onClick={() => {
-                      updateActiveTag(tag.label, tag.slug);
-                      handleClose();
-                    }}
-                  >
-                    {tag.label}
-                  </div>
-                ))}
+                {(() => {
+                  // API may return { data: [...] } or a spread object { 0: item, 1: item, ..., success, message }
+                  let tagsArray = [];
+                  if (Array.isArray(polymarketData?.data)) {
+                    tagsArray = polymarketData.data;
+                  } else if (polymarketData && typeof polymarketData === "object" && polymarketData.success) {
+                    const keys = Object.keys(polymarketData).filter(
+                      (k) => k !== "success" && k !== "message" && String(Number(k)) === k
+                    );
+                    if (keys.length) {
+                      tagsArray = keys.sort((a, b) => Number(a) - Number(b)).map((k) => polymarketData[k]);
+                    }
+                  }
+
+                  return tagsArray.map((tag) => (
+                    <div
+                      key={tag.slug}
+                      className={`polymarket-tag-item ${activeSlug === tag.slug ? "active" : ""}`}
+                      onClick={() => {
+                        updateActiveTag(tag.label, tag.slug);
+                        handleClose();
+                      }}
+                    >
+                      {tag.label}
+                    </div>
+                  ));
+                })()}
               </div>
             )}
 

@@ -47,7 +47,8 @@ export const Sidebar = ({ handlePopup }) => {
   const { activePolymarketTab, updateActiveTag } = useTags();
 
   const location = useLocation();
-  const isPredictionRoute = location.pathname === "/prediction";
+  const isPredictionRoute = location.pathname.startsWith("/prediction");
+  const isMyPredictionsRoute = location.pathname === "/prediction/my";
 
   const {
     data: tagsData,
@@ -83,10 +84,10 @@ export const Sidebar = ({ handlePopup }) => {
     setActivetab(location.pathname.includes("/exchange") ? "Exchange" : "Book");
   }, [location.pathname]);
   useEffect(() => {
-    if (location.pathname === "/prediction") {
+    if (isPredictionRoute) {
       setActivetab("Prediction");
     }
-  }, [location.pathname]);
+  }, [isPredictionRoute]);
 
   const handleTabSwitch = (tab) => {
     setActivetab(tab);
@@ -309,9 +310,26 @@ export const Sidebar = ({ handlePopup }) => {
             </div>
 
             {isPredictionRoute && (
-              <button className={activetab === "Prediction" ? "active-tab" : "prediction-tab"} onClick={handlePress}>
-                Prediction
-              </button>
+              <>
+                <button
+                  className={isMyPredictionsRoute ? "prediction-tab" : activetab === "Prediction" ? "active-tab" : "prediction-tab"}
+                  onClick={() => {
+                    handlePress();
+                    navigate("/prediction");
+                  }}
+                >
+                  Prediction
+                </button>
+                <button
+                  className={isMyPredictionsRoute ? "active-tab" : "prediction-tab"}
+                  onClick={() => {
+                    handlePress();
+                    navigate("/prediction/my");
+                  }}
+                >
+                  My Predictions
+                </button>
+              </>
             )}
           </div>
 
@@ -488,12 +506,13 @@ export const ResponsiveSidebar = ({ handleClose }) => {
   const { isLogin } = useAuth();
   const [activetab, setActivetab] = useState("Sportsbook");
   const { activePolymarketTab, activeSlug, updateActiveTag } = useTags();
-  const isPredictionRoute = location.pathname === "/prediction";
+  const isPredictionRoute = location.pathname.startsWith("/prediction");
+  const isMyPredictionsRoute = location.pathname === "/prediction/my";
   useEffect(() => {
-    if (location.pathname === "/prediction") {
+    if (isPredictionRoute) {
       setActivetab("Prediction");
     }
-  }, [location.pathname]);
+  }, [isPredictionRoute]);
   const handlePress = () => {
     setIsPredictionView(true);
     setActivetab("Prediction");
@@ -743,12 +762,26 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                   Exchange
                 </button>
                 {isPredictionRoute && (
-                  <button
-                    className={activetab === "Prediction" ? "active-tab" : "prediction-tab"}
-                    onClick={handlePress}
-                  >
-                    Prediction
-                  </button>
+                  <>
+                    <button
+                      className={isMyPredictionsRoute ? "prediction-tab" : activetab === "Prediction" ? "active-tab" : "prediction-tab"}
+                      onClick={() => {
+                        handlePress();
+                        navigate("/prediction");
+                      }}
+                    >
+                      Prediction
+                    </button>
+                    <button
+                      className={isMyPredictionsRoute ? "active-tab" : "prediction-tab"}
+                      onClick={() => {
+                        handlePress();
+                        navigate("/prediction/my");
+                      }}
+                    >
+                      My Predictions
+                    </button>
+                  </>
                 )}
               </div>
 

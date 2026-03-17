@@ -19,6 +19,8 @@ import { useLocation } from "react-router-dom";
 import Loader from "../components/ExchnageUtility/GameUtility/Loader";
 import "../Style/Home.css";
 import HoverButton from "../components/HoverButton/HoverButton";
+import PredictionSlipModal from "../components/PredictionSlipModal/PredictionSlipModal";
+import MyPredictions from "../components/MyPredictions/MyPredictions";
 import { useTags } from "../context/TagsContext";
 
 const Home = () => {
@@ -36,8 +38,13 @@ const Home = () => {
   const { handleClose, handleOpenLogin, handleOpenSignup, openLogin, openSignUp, setLiveUpcome, isPredictionView } =
     useNavRoute();
 
+  const [slipOpen, setSlipOpen] = useState(false);
+  const [slipData, setSlipData] = useState(null);
+
   const POLYMARKET_KEY = `/sports/polymarket-events?slug=${activeSlug}`;
-  const hideOnPrediction = location.pathname === "/prediction";
+  const isPredictionRoute = location.pathname.startsWith("/prediction");
+  const isMyPredictionsRoute = location.pathname === "/prediction/my";
+  const hideOnPrediction = isPredictionRoute;
 
   const {
     data: polymarketData,
@@ -51,6 +58,7 @@ const Home = () => {
       mutate(POLYMARKET_KEY); // refresh data
     }
   }, [isPredictionView]);
+
   useEffect(() => {
     const activeTab = tabRefs.current.find((el) => el?.dataset.tab === sportsStatusTab);
     if (activeTab) {
@@ -156,34 +164,71 @@ const Home = () => {
             <div className="underline" style={underlineStyle}></div>
           </div>
         )}
-        {isPredictionView && location.pathname === "/prediction" && (
-          <div className="polymarket-wrapper">
-            {polymarketArray.map((item, idx) => (
-              <div key={idx} className="polymarket-card">
-                <div className="card-header">
-                  <img src={item.image} alt={item.title} />
-                  <h4 className="title" title={item.title}>
-                    {item.title}
-                  </h4>
-                  <button className="ai-btn">AI Advisor</button>
-                </div>
-                <div className="market-list">
-                  {item.markets.map((market, mIdx) => {
-                    return (
-                      <div key={mIdx} className="market-row">
-                        <span className="market-title">{market.groupItemTitle || "--"}</span>
-                        <span className="market-price">{market.price || "--"}</span>
-                        <div className="yes-no">
-                          <HoverButton market={market} outcome="Yes" />
-                          <HoverButton market={market} outcome="No" />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+        {isPredictionView && isPredictionRoute && (
+          <>
+            {isMyPredictionsRoute ? (
+              <MyPredictions />
+            ) : (
+              <div className="polymarket-wrapper">
+                {polymarketArray.map((item, idx) => (
+                  <div key={idx} className="polymarket-card">
+                    <div className="card-header">
+                      <img src={item.image} alt={item.title} />
+                      <h4 className="title" title={item.title}>
+                        {item.title}
+                      </h4>
+                      <button className="ai-btn">AI Advisor</button>
+                    </div>
+                    <div className="market-list">
+                      {item.markets.map((market, mIdx) => {
+                        const eventTitle = [item.title, market.groupItemTitle].filter(Boolean).join(" — ");
+                        return (
+                          <div key={mIdx} className="market-row">
+                            <span className="market-title">{market.groupItemTitle || "--"}</span>
+                            <span className="market-price">{market.price || "--"}</span>
+                            <div className="yes-no">
+                              <HoverButton
+                                market={market}
+                                outcome="Yes"
+                                eventTitle={eventTitle}
+                                onLoginRequired={handleOpenLogin}
+                                onPlaceClick={({ market: m, outcome: o, eventTitle: t }) => {
+                                  setSlipData({ market: m, outcome: o, eventTitle: t });
+                                  setSlipOpen(true);
+                                }}
+                              />
+                              <HoverButton
+                                market={market}
+                                outcome="No"
+                                eventTitle={eventTitle}
+                                onLoginRequired={handleOpenLogin}
+                                onPlaceClick={({ market: m, outcome: o, eventTitle: t }) => {
+                                  setSlipData({ market: m, outcome: o, eventTitle: t });
+                                  setSlipOpen(true);
+                                }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            )}
+            {slipOpen && slipData && (
+              <PredictionSlipModal
+                market={slipData.market}
+                outcome={slipData.outcome}
+                eventTitle={slipData.eventTitle}
+                onClose={() => {
+                  setSlipOpen(false);
+                  setSlipData(null);
+                }}
+                onSuccess={() => mutate("/user/prediction/my")}
+              />
+            )}
+          </>
         )}
       </div>
       <GamenewListSlider titles="Live/Upcoming" handlegameName={handlegameName} sportsStatusTab={sportsStatusTab} />

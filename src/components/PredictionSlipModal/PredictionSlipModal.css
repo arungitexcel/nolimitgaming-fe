@@ -1,0 +1,122 @@
+/** @format */
+
+.prediction-slip-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.prediction-slip-modal {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  min-width: 320px;
+  max-width: 90vw;
+}
+
+.prediction-slip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #333;
+}
+
+.prediction-slip-header span {
+  color: #fff;
+  font-weight: 600;
+}
+
+.prediction-slip-close {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.prediction-slip-close:hover {
+  color: #fff;
+}
+
+.prediction-slip-body {
+  padding: 16px;
+}
+
+.prediction-slip-title {
+  color: #ccc;
+  font-size: 14px;
+  margin: 0 0 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prediction-slip-label {
+  display: block;
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.prediction-slip-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.prediction-slip-quick {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.prediction-slip-quick button {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.prediction-slip-quick button:hover {
+  background: #333;
+  color: #fff;
+}
+
+.prediction-slip-footer {
+  padding: 12px 16px;
+  border-top: 1px solid #333;
+}
+
+.prediction-slip-place {
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #32a058;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.prediction-slip-place:hover:not(:disabled) {
+  background: #4bec82;
+}
+
+.prediction-slip-place:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

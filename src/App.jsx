@@ -25,6 +25,11 @@ import SportbookHistory from "./Pages/SportbookHistory";
 import ExchangeHistory from "./Pages/ExchangeHistory";
 import ReferEarn from "./Pages/ReferEarn";
 import BonusPage from "./Pages/BonusPage";
+import AdminEntry from "./admin/pages/AdminEntry";
+import AdminLayout from "./admin/AdminLayout";
+import UsersPage from "./admin/pages/UsersPage";
+import KycReviewPage from "./admin/pages/KycReviewPage";
+import ManagerProtectedRoute from "./routes/ManagerProtectedRoute";
 
 function App() {
   return (
@@ -38,6 +43,16 @@ function App() {
           <Route path="/prediction/my" element={<Home />} />
         </Route>
         <Route path="/signup" element={<SignUp />} />
+        {/* Manager Admin (only role === "manager") */}
+        <Route path="/admin">
+          <Route index element={<AdminEntry />} />
+          <Route element={<ManagerProtectedRoute />}>
+            <Route element={<AdminLayout />}>
+              <Route path="users" element={<UsersPage />} />
+              <Route path="kyc" element={<KycReviewPage />} />
+            </Route>
+          </Route>
+        </Route>
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>

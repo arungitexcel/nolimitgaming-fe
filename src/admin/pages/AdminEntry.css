@@ -1,0 +1,111 @@
+.AdminEntry-overlay {
+  top: 0;
+  border-bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.545);
+}
+
+.AdminEntry-container {
+  display: flex;
+  height: 650px;
+  width: 70%;
+  background: var(--background-color);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.AdminEntry-section-first {
+  position: relative;
+  width: 55%;
+}
+
+.AdminEntry-auth-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.AdminEntry-ads {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-color);
+  width: 100%;
+  text-align: center;
+}
+
+.AdminEntry-ads h1 {
+  font-weight: 800;
+  font-size: 2.2rem;
+}
+
+.AdminEntry-ads p {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.AdminEntry-section-second {
+  width: 50%;
+  padding: 1rem 1.5rem;
+}
+
+.AdminEntry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.AdminEntry-header h2 {
+  font-size: 1.2rem;
+}
+
+.AdminEntry-form .form-group {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.AdminEntry-btn {
+  width: 100%;
+  background-image: var(--buttons-bg-color);
+  color: #000;
+  font-weight: 700;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1.4rem;
+}
+
+.AdminEntry-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .AdminEntry-section-first {
+    display: none;
+  }
+
+  .AdminEntry-container {
+    width: 90%;
+    max-height: 450px;
+    border-radius: 0.4rem;
+  }
+
+  .AdminEntry-section-second {
+    width: 100%;
+  }
+}
+

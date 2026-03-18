@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
-import icon from "../../assets/coin.png";
+import playChipsIcon from "../../assets/playchips_coin.svg";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { FaBasketballBall, FaFootballBall, FaBaseballBall } from "react-icons/fa";
@@ -272,7 +272,7 @@ export const Sidebar = ({ handlePopup }) => {
       <div className="sidebar-items">
         {/* Nolimit Token */}
         <div className="sidebar-item">
-          <img src={icon} alt="" />
+          <img className="playchips-logo" src={playChipsIcon} alt="Play Chips" />
           <div
             style={{
               display: "flex",
@@ -281,8 +281,8 @@ export const Sidebar = ({ handlePopup }) => {
               justifyContent: "center",
             }}
           >
-            <p>Balance</p>
-            <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p>
+            {/* <p>Balance</p> */}
+            {/* <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p> */}
             <p style={{ fontSize: "12px", opacity: 0.9 }}>Play Chips</p>
             <p style={{ fontWeight: "600" }}>
               {user?.playChips ? Number(user.playChips).toFixed(2) : "00.00"}
@@ -723,7 +723,7 @@ export const ResponsiveSidebar = ({ handleClose }) => {
             {/* Nolimit Token */}
             <div className="responsive-sidebar-item">
               <div style={{ display: "flex", gap: "1rem" }}>
-                <img src={icon} alt="" />
+                <img className="playchips-logo" src={playChipsIcon} alt="Play Chips" />
                 <div
                   style={{
                     display: "flex",
@@ -732,8 +732,8 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <p>Balance</p>
-                  <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p>
+                  {/* <p>Balance</p> */}
+                  {/* <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p> */}
                   <p style={{ fontSize: "12px", opacity: 0.9 }}>Play Chips</p>
                   <p style={{ fontWeight: "600" }}>
                     {user?.playChips ? Number(user.playChips).toFixed(2) : "00.00"}

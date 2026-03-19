@@ -22,8 +22,10 @@ import {
 
 function parseSettingsResponse(res) {
   if (Array.isArray(res)) return res;
+  if (Array.isArray(res?.allowedCountries)) return res.allowedCountries;
   if (Array.isArray(res?.countries)) return res.countries;
   if (Array.isArray(res?.data)) return res.data;
+  if (Array.isArray(res?.data?.allowedCountries)) return res.data.allowedCountries;
   if (Array.isArray(res?.data?.countries)) return res.data.countries;
   if (Array.isArray(res?.data?.data)) return res.data.data;
   return [];

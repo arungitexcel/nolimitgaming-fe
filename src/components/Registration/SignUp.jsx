@@ -16,6 +16,10 @@ import { useNavigate } from "react-router-dom";
 import { postData } from "../../api/ClientFunction";
 import Swal from "sweetalert2";
 
+const isGeofenceDenied = (message) =>
+  String(message || "").toLowerCase() ===
+  "access not allowed from your location";
+
 const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -115,6 +119,15 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
     const response = await postData("/user/register", payload);
     console.log(response);
 
+    if (isGeofenceDenied(response?.message)) {
+      Swal.fire(
+        "Location Restricted",
+        "Registration is not available from your current location.",
+        "error"
+      );
+      return;
+    }
+
     if (response?.success) {
       Swal.fire("Wow", response?.message, "success");
       setIsOtpModalVisible(true);
@@ -127,6 +140,15 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
       otp,
       ...signupData,
     });
+
+    if (isGeofenceDenied(response?.message)) {
+      Swal.fire(
+        "Location Restricted",
+        "Account verification is not available from your current location.",
+        "error"
+      );
+      return;
+    }
 
     if (response?.status || response?.success) {
       localStorage.setItem("token", response?.token);

@@ -14,6 +14,23 @@
   margin: 0 0 12px;
 }
 
+.my-predictions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.my-predictions-statement-btn {
+  border: 1px solid #3a69ff;
+  background: #2241a8;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
 .my-predictions-login,
 .my-predictions-empty {
   color: #888;

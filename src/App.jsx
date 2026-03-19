@@ -26,6 +26,7 @@ import ExchangeHistory from "./Pages/ExchangeHistory";
 import ReferEarn from "./Pages/ReferEarn";
 import BonusPage from "./Pages/BonusPage";
 import BuyPlayChipsPage from "./Pages/BuyPlayChipsPage";
+import PredictionStatement from "./Pages/PredictionStatement";
 import AdminEntry from "./admin/pages/AdminEntry";
 import AdminLayout from "./admin/AdminLayout";
 import UsersPage from "./admin/pages/UsersPage";
@@ -87,6 +88,7 @@ function App() {
             <Route path="/referearn" element={<ReferEarn />} />
             <Route path="/bonus" element={<BonusPage />} />
             <Route path="/buy-play-chips" element={<BuyPlayChipsPage />} />
+            <Route path="/prediction/statement" element={<PredictionStatement />} />
           </Route>
         </Route>
       </Routes>

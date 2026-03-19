@@ -2,12 +2,14 @@
 
 import React from "react";
 import useSWR from "swr";
+import { useNavigate } from "react-router-dom";
 import { fetchData } from "../../api/ClientFunction";
 import Loader from "../ExchnageUtility/GameUtility/Loader";
 import "./MyPredictions.css";
 
 // Lists user's Polymarket predictions (PENDING/WON/LOST). Only fetches when logged in.
 const MyPredictions = () => {
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { data, isLoading } = useSWR(
     token ? "/user/prediction/my?limit=20" : null,
@@ -40,7 +42,12 @@ const MyPredictions = () => {
 
   return (
     <div className="my-predictions-section">
-      <h4 className="my-predictions-title">My Predictions ({totalCount})</h4>
+      <div className="my-predictions-header">
+        <h4 className="my-predictions-title">My Predictions ({totalCount})</h4>
+        <button className="my-predictions-statement-btn" onClick={() => navigate("/prediction/statement")}>
+          Full Statement
+        </button>
+      </div>
       {entries.length === 0 ? (
         <p className="my-predictions-empty">No predictions yet</p>
       ) : (

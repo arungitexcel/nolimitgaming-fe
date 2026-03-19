@@ -62,7 +62,10 @@ const handleRequest = async (method, url, data = null, customHeaders = {}) => {
       return errorData;
     }
 
-    if (!errorData?.success && errorData?.message) {
+    const isGeofenceError =
+      errorData?.message === "Access not allowed from your location";
+
+    if (!errorData?.success && errorData?.message && !isGeofenceError) {
       toast.error(
         typeof errorData.message === "string"
           ? errorData.message

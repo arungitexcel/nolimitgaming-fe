@@ -9,6 +9,10 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { postData } from "../../api/ClientFunction";
 
+const isGeofenceDenied = (message) =>
+  String(message || "").toLowerCase() ===
+  "access not allowed from your location";
+
 const SignIn = ({
   handlePopup,
   handleClose,
@@ -47,13 +51,24 @@ const SignIn = ({
   const handelOnSubmit = async (values, { resetForm }) => {
     const response = await postData("/user/login", values);
 
+    if (isGeofenceDenied(response?.message)) {
+      Swal.fire(
+        "Location Restricted",
+        "Access is not available from your current location.",
+        "error"
+      );
+      return;
+    }
+
     if (response?.status || response?.success) {
       localStorage.setItem("token", response?.token);
       Swal.fire("Wow", response?.message, "success").then(() => {
         window.location.href = "/";
       });
     }
-    resetForm();
+    if (response?.status || response?.success) {
+      resetForm();
+    }
     // handleClose();
   };
 

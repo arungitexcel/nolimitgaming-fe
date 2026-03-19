@@ -49,6 +49,7 @@ export const Sidebar = ({ handlePopup }) => {
   const location = useLocation();
   const isPredictionRoute = location.pathname.startsWith("/prediction");
   const isMyPredictionsRoute = location.pathname === "/prediction/my";
+  const isPredictionStatementRoute = location.pathname === "/prediction/statement";
 
   const {
     data: tagsData,
@@ -337,6 +338,15 @@ export const Sidebar = ({ handlePopup }) => {
                 >
                   My Predictions
                 </button>
+                <button
+                  className={isPredictionStatementRoute ? "active-tab" : "prediction-tab"}
+                  onClick={() => {
+                    handlePress();
+                    navigate("/prediction/statement");
+                  }}
+                >
+                  Statement
+                </button>
               </>
             )}
           </div>
@@ -516,6 +526,7 @@ export const ResponsiveSidebar = ({ handleClose }) => {
   const { activePolymarketTab, activeSlug, updateActiveTag } = useTags();
   const isPredictionRoute = location.pathname.startsWith("/prediction");
   const isMyPredictionsRoute = location.pathname === "/prediction/my";
+  const isPredictionStatementRoute = location.pathname === "/prediction/statement";
   useEffect(() => {
     if (isPredictionRoute) {
       setActivetab("Prediction");
@@ -802,6 +813,15 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                       }}
                     >
                       My Predictions
+                    </button>
+                    <button
+                      className={isPredictionStatementRoute ? "active-tab" : "prediction-tab"}
+                      onClick={() => {
+                        handlePress();
+                        navigate("/prediction/statement");
+                      }}
+                    >
+                      Statement
                     </button>
                   </>
                 )}

@@ -1,0 +1,34 @@
+.prediction-statement-page {
+  padding: 16px;
+  color: #fff;
+}
+
+.prediction-statement-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.prediction-statement-filter-status {
+  min-width: 150px;
+}
+
+.prediction-statement-filter-search {
+  min-width: 240px;
+  max-width: 360px;
+}
+
+.prediction-statement-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.prediction-statement-summary > div {
+  background: #14151d;
+  border: 1px solid #2a2d3d;
+  border-radius: 8px;
+  padding: 10px 12px;
+}

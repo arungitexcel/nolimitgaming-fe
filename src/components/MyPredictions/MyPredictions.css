@@ -1,0 +1,116 @@
+/** @format */
+
+.my-predictions-section {
+  margin-top: 24px;
+  padding: 16px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+}
+
+.my-predictions-title {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+
+.my-predictions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.my-predictions-statement-btn {
+  border: 1px solid #3a69ff;
+  background: #2241a8;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.my-predictions-login,
+.my-predictions-empty {
+  color: #888;
+  font-size: 14px;
+  margin: 0;
+}
+
+.my-predictions-loading {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.my-predictions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.my-predictions-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #0a0a0a;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.my-predictions-market {
+  flex: 1;
+  min-width: 120px;
+  color: #ccc;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.my-predictions-outcome {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.outcome-yes {
+  background: #2e7d32;
+  color: #e4f7e6;
+}
+
+.outcome-no {
+  background: #c62828;
+  color: #fcebea;
+}
+
+.my-predictions-amount {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.my-predictions-status {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #ffa726;
+}
+
+.status-won {
+  color: #4caf50;
+}
+
+.status-lost {
+  color: #f44336;
+}
+
+.my-predictions-resolved {
+  font-size: 12px;
+  color: #9e9e9e;
+}

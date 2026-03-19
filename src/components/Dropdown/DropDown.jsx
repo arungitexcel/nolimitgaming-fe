@@ -8,6 +8,7 @@ import { DiOpenshift } from "react-icons/di";
 import { RiExchangeLine } from "react-icons/ri";
 import { AiOutlineLogout, AiOutlineSafetyCertificate } from "react-icons/ai";
 import { FiGift } from "react-icons/fi";
+import { FaCoins } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 const DropDown = ({ handleMenu, showMenu }) => {
@@ -26,6 +27,11 @@ const DropDown = ({ handleMenu, showMenu }) => {
       option: "Coin History",
       icon: <FaMoneyBillWave />,
       route: "/coinhistory",
+    },
+    {
+      option: "Buy Play Chips",
+      icon: <FaCoins />,
+      route: "/buy-play-chips",
     },
     {
       option: "Bonus History",

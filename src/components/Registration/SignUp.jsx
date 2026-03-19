@@ -16,6 +16,10 @@ import { useNavigate } from "react-router-dom";
 import { postData } from "../../api/ClientFunction";
 import Swal from "sweetalert2";
 
+const isGeofenceDenied = (message) =>
+  String(message || "").toLowerCase() ===
+  "access not allowed from your location";
+
 const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -72,6 +76,12 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
         "Referral Code must contain only letters and numbers"
       )
       .max(20, "Referral Code must not exceed 20 characters"),
+    promoCode: Yup.string()
+      .matches(
+        /^[A-Za-z0-9]*$/,
+        "Promo Code must contain only letters and numbers"
+      )
+      .max(30, "Promo Code must not exceed 30 characters"),
     agreement: Yup.boolean()
       .oneOf([true], "You must agree to the User Agreement")
       .required("User Agreement must be accepted"),
@@ -91,6 +101,7 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
     country: "",
     zipcode: "",
     inviteCode: "",
+    promoCode: "",
     agreement: false,
   };
 
@@ -108,6 +119,15 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
     const response = await postData("/user/register", payload);
     console.log(response);
 
+    if (isGeofenceDenied(response?.message)) {
+      Swal.fire(
+        "Location Restricted",
+        "Registration is not available from your current location.",
+        "error"
+      );
+      return;
+    }
+
     if (response?.success) {
       Swal.fire("Wow", response?.message, "success");
       setIsOtpModalVisible(true);
@@ -120,6 +140,15 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
       otp,
       ...signupData,
     });
+
+    if (isGeofenceDenied(response?.message)) {
+      Swal.fire(
+        "Location Restricted",
+        "Account verification is not available from your current location.",
+        "error"
+      );
+      return;
+    }
 
     if (response?.status || response?.success) {
       localStorage.setItem("token", response?.token);
@@ -369,6 +398,18 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
                             type="text"
                             name="inviteCode"
                             placeholder="Enter Invite Code (Optional)"
+                          />
+                        </div>
+                        <div className="form-group">
+                          <Field
+                            type="text"
+                            name="promoCode"
+                            placeholder="Enter Promo Code (Optional)"
+                          />
+                          <ErrorMessage
+                            name="promoCode"
+                            component="div"
+                            className="error"
                           />
                         </div>
                       </div>

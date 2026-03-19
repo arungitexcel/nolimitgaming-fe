@@ -37,6 +37,13 @@
   width: 2rem;
 }
 
+.sidebar-item .playchips-logo {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  flex: 0 0 auto;
+}
+
 .polymarket-tags-list {
   display: flex;
   flex-direction: column;
@@ -376,6 +383,13 @@ body.light-mode .sidebar-theme-switch button:hover {
 
 .responsive-sidebar-item img {
   width: 2.5rem;
+}
+
+.responsive-sidebar-item .playchips-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: block;
+  flex: 0 0 auto;
 }
 
 .responsive-sidebar-item div p {

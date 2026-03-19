@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
-import icon from "../../assets/coin.png";
+import playChipsIcon from "../../assets/playchips_coin.svg";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { FaBasketballBall, FaFootballBall, FaBaseballBall } from "react-icons/fa";
@@ -47,7 +47,9 @@ export const Sidebar = ({ handlePopup }) => {
   const { activePolymarketTab, updateActiveTag } = useTags();
 
   const location = useLocation();
-  const isPredictionRoute = location.pathname === "/prediction";
+  const isPredictionRoute = location.pathname.startsWith("/prediction");
+  const isMyPredictionsRoute = location.pathname === "/prediction/my";
+  const isPredictionStatementRoute = location.pathname === "/prediction/statement";
 
   const {
     data: tagsData,
@@ -83,10 +85,10 @@ export const Sidebar = ({ handlePopup }) => {
     setActivetab(location.pathname.includes("/exchange") ? "Exchange" : "Book");
   }, [location.pathname]);
   useEffect(() => {
-    if (location.pathname === "/prediction") {
+    if (isPredictionRoute) {
       setActivetab("Prediction");
     }
-  }, [location.pathname]);
+  }, [isPredictionRoute]);
 
   const handleTabSwitch = (tab) => {
     setActivetab(tab);
@@ -270,8 +272,16 @@ export const Sidebar = ({ handlePopup }) => {
     <div className="sidebar-container">
       <div className="sidebar-items">
         {/* Nolimit Token */}
-        <div className="sidebar-item">
-          <img src={icon} alt="" />
+        <div
+          className="sidebar-item"
+          onClick={() => navigate("/buy-play-chips")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") navigate("/buy-play-chips");
+          }}
+        >
+          <img className="playchips-logo" src={playChipsIcon} alt="Play Chips" />
           <div
             style={{
               display: "flex",
@@ -280,14 +290,14 @@ export const Sidebar = ({ handlePopup }) => {
               justifyContent: "center",
             }}
           >
-            <p>Balance</p>
-            <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p>
+            {/* <p>Balance</p> */}
+            {/* <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p> */}
             <p style={{ fontSize: "12px", opacity: 0.9 }}>Play Chips</p>
             <p style={{ fontWeight: "600" }}>
               {user?.playChips ? Number(user.playChips).toFixed(2) : "00.00"}
             </p>
           </div>
-          <p className="sidebar-item-arrow">
+            <p className="sidebar-item-arrow">
             <IoIosArrowForward />
           </p>
         </div>
@@ -309,9 +319,35 @@ export const Sidebar = ({ handlePopup }) => {
             </div>
 
             {isPredictionRoute && (
-              <button className={activetab === "Prediction" ? "active-tab" : "prediction-tab"} onClick={handlePress}>
-                Prediction
-              </button>
+              <>
+                <button
+                  className={isMyPredictionsRoute ? "prediction-tab" : activetab === "Prediction" ? "active-tab" : "prediction-tab"}
+                  onClick={() => {
+                    handlePress();
+                    navigate("/prediction");
+                  }}
+                >
+                  Prediction
+                </button>
+                <button
+                  className={isMyPredictionsRoute ? "active-tab" : "prediction-tab"}
+                  onClick={() => {
+                    handlePress();
+                    navigate("/prediction/my");
+                  }}
+                >
+                  My Predictions
+                </button>
+                <button
+                  className={isPredictionStatementRoute ? "active-tab" : "prediction-tab"}
+                  onClick={() => {
+                    handlePress();
+                    navigate("/prediction/statement");
+                  }}
+                >
+                  Statement
+                </button>
+              </>
             )}
           </div>
 
@@ -488,12 +524,14 @@ export const ResponsiveSidebar = ({ handleClose }) => {
   const { isLogin } = useAuth();
   const [activetab, setActivetab] = useState("Sportsbook");
   const { activePolymarketTab, activeSlug, updateActiveTag } = useTags();
-  const isPredictionRoute = location.pathname === "/prediction";
+  const isPredictionRoute = location.pathname.startsWith("/prediction");
+  const isMyPredictionsRoute = location.pathname === "/prediction/my";
+  const isPredictionStatementRoute = location.pathname === "/prediction/statement";
   useEffect(() => {
-    if (location.pathname === "/prediction") {
+    if (isPredictionRoute) {
       setActivetab("Prediction");
     }
-  }, [location.pathname]);
+  }, [isPredictionRoute]);
   const handlePress = () => {
     setIsPredictionView(true);
     setActivetab("Prediction");
@@ -702,9 +740,23 @@ export const ResponsiveSidebar = ({ handleClose }) => {
         <div className="responsive-sidebar-container">
           <div className="sidebar-items">
             {/* Nolimit Token */}
-            <div className="responsive-sidebar-item">
+            <div
+              className="responsive-sidebar-item"
+              onClick={() => {
+                navigate("/buy-play-chips");
+                handleClose();
+              }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  navigate("/buy-play-chips");
+                  handleClose();
+                }
+              }}
+            >
               <div style={{ display: "flex", gap: "1rem" }}>
-                <img src={icon} alt="" />
+                <img className="playchips-logo" src={playChipsIcon} alt="Play Chips" />
                 <div
                   style={{
                     display: "flex",
@@ -713,8 +765,8 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <p>Balance</p>
-                  <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p>
+                  {/* <p>Balance</p> */}
+                  {/* <p style={{ fontWeight: "600" }}>{user?.money ? Number(user.money).toFixed(2) : "00.00"}</p> */}
                   <p style={{ fontSize: "12px", opacity: 0.9 }}>Play Chips</p>
                   <p style={{ fontWeight: "600" }}>
                     {user?.playChips ? Number(user.playChips).toFixed(2) : "00.00"}
@@ -743,12 +795,35 @@ export const ResponsiveSidebar = ({ handleClose }) => {
                   Exchange
                 </button>
                 {isPredictionRoute && (
-                  <button
-                    className={activetab === "Prediction" ? "active-tab" : "prediction-tab"}
-                    onClick={handlePress}
-                  >
-                    Prediction
-                  </button>
+                  <>
+                    <button
+                      className={isMyPredictionsRoute ? "prediction-tab" : activetab === "Prediction" ? "active-tab" : "prediction-tab"}
+                      onClick={() => {
+                        handlePress();
+                        navigate("/prediction");
+                      }}
+                    >
+                      Prediction
+                    </button>
+                    <button
+                      className={isMyPredictionsRoute ? "active-tab" : "prediction-tab"}
+                      onClick={() => {
+                        handlePress();
+                        navigate("/prediction/my");
+                      }}
+                    >
+                      My Predictions
+                    </button>
+                    <button
+                      className={isPredictionStatementRoute ? "active-tab" : "prediction-tab"}
+                      onClick={() => {
+                        handlePress();
+                        navigate("/prediction/statement");
+                      }}
+                    >
+                      Statement
+                    </button>
+                  </>
                 )}
               </div>
 

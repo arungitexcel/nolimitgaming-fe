@@ -72,6 +72,12 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
         "Referral Code must contain only letters and numbers"
       )
       .max(20, "Referral Code must not exceed 20 characters"),
+    promoCode: Yup.string()
+      .matches(
+        /^[A-Za-z0-9]*$/,
+        "Promo Code must contain only letters and numbers"
+      )
+      .max(30, "Promo Code must not exceed 30 characters"),
     agreement: Yup.boolean()
       .oneOf([true], "You must agree to the User Agreement")
       .required("User Agreement must be accepted"),
@@ -91,6 +97,7 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
     country: "",
     zipcode: "",
     inviteCode: "",
+    promoCode: "",
     agreement: false,
   };
 
@@ -369,6 +376,18 @@ const SignUp = ({ handlePopup, handleClose, handleOpenLogin }) => {
                             type="text"
                             name="inviteCode"
                             placeholder="Enter Invite Code (Optional)"
+                          />
+                        </div>
+                        <div className="form-group">
+                          <Field
+                            type="text"
+                            name="promoCode"
+                            placeholder="Enter Promo Code (Optional)"
+                          />
+                          <ErrorMessage
+                            name="promoCode"
+                            component="div"
+                            className="error"
                           />
                         </div>
                       </div>

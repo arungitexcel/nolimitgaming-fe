@@ -271,7 +271,15 @@ export const Sidebar = ({ handlePopup }) => {
     <div className="sidebar-container">
       <div className="sidebar-items">
         {/* Nolimit Token */}
-        <div className="sidebar-item">
+        <div
+          className="sidebar-item"
+          onClick={() => navigate("/buy-play-chips")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") navigate("/buy-play-chips");
+          }}
+        >
           <img className="playchips-logo" src={playChipsIcon} alt="Play Chips" />
           <div
             style={{
@@ -288,7 +296,7 @@ export const Sidebar = ({ handlePopup }) => {
               {user?.playChips ? Number(user.playChips).toFixed(2) : "00.00"}
             </p>
           </div>
-          <p className="sidebar-item-arrow">
+            <p className="sidebar-item-arrow">
             <IoIosArrowForward />
           </p>
         </div>
@@ -721,7 +729,21 @@ export const ResponsiveSidebar = ({ handleClose }) => {
         <div className="responsive-sidebar-container">
           <div className="sidebar-items">
             {/* Nolimit Token */}
-            <div className="responsive-sidebar-item">
+            <div
+              className="responsive-sidebar-item"
+              onClick={() => {
+                navigate("/buy-play-chips");
+                handleClose();
+              }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  navigate("/buy-play-chips");
+                  handleClose();
+                }
+              }}
+            >
               <div style={{ display: "flex", gap: "1rem" }}>
                 <img className="playchips-logo" src={playChipsIcon} alt="Play Chips" />
                 <div

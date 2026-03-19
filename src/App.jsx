@@ -25,10 +25,16 @@ import SportbookHistory from "./Pages/SportbookHistory";
 import ExchangeHistory from "./Pages/ExchangeHistory";
 import ReferEarn from "./Pages/ReferEarn";
 import BonusPage from "./Pages/BonusPage";
+import BuyPlayChipsPage from "./Pages/BuyPlayChipsPage";
 import AdminEntry from "./admin/pages/AdminEntry";
 import AdminLayout from "./admin/AdminLayout";
 import UsersPage from "./admin/pages/UsersPage";
 import KycReviewPage from "./admin/pages/KycReviewPage";
+import PromoCodesPage from "./admin/pages/PromoCodesPage";
+import WalletBonusPage from "./admin/pages/WalletBonusPage";
+import GeofencePage from "./admin/pages/GeofencePage";
+import PolymarketCategoryVisibilityPage from "./admin/pages/PolymarketCategoryVisibilityPage";
+import PredictionReportsPage from "./admin/pages/PredictionReportsPage";
 import ManagerProtectedRoute from "./routes/ManagerProtectedRoute";
 
 function App() {
@@ -50,6 +56,14 @@ function App() {
             <Route element={<AdminLayout />}>
               <Route path="users" element={<UsersPage />} />
               <Route path="kyc" element={<KycReviewPage />} />
+              <Route path="promo-codes" element={<PromoCodesPage />} />
+              <Route path="wallet-bonus" element={<WalletBonusPage />} />
+              <Route path="geofence" element={<GeofencePage />} />
+              <Route
+                path="polymarket-category-visibility"
+                element={<PolymarketCategoryVisibilityPage />}
+              />
+              <Route path="prediction-reports" element={<PredictionReportsPage />} />
             </Route>
           </Route>
         </Route>
@@ -72,6 +86,7 @@ function App() {
             <Route path="/exchangehistory" element={<ExchangeHistory />} />
             <Route path="/referearn" element={<ReferEarn />} />
             <Route path="/bonus" element={<BonusPage />} />
+            <Route path="/buy-play-chips" element={<BuyPlayChipsPage />} />
           </Route>
         </Route>
       </Routes>

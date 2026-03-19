@@ -75,6 +75,30 @@ export default function UsersPage() {
       { title: "Username", dataIndex: "username", key: "username" },
       { title: "Email", dataIndex: "email", key: "email" },
       { title: "Phone", dataIndex: "phone", key: "phone" },
+      {
+        title: "Cash",
+        dataIndex: "money",
+        key: "money",
+        render: (v) => (v != null ? Number(v).toFixed(2) : "—"),
+      },
+      {
+        title: "Play Chips",
+        dataIndex: "playChips",
+        key: "playChips",
+        render: (v) => (v != null ? Number(v).toFixed(2) : "—"),
+      },
+      {
+        title: "Cash Exposure",
+        dataIndex: "exposure",
+        key: "exposure",
+        render: (v) => (v != null ? Number(v).toFixed(2) : "—"),
+      },
+      {
+        title: "Play Chips Exposure",
+        dataIndex: "playChipsExposure",
+        key: "playChipsExposure",
+        render: (v) => (v != null ? Number(v).toFixed(2) : "—"),
+      },
       { title: "Status", dataIndex: "status", key: "status" },
       {
         title: "Created",
@@ -216,7 +240,7 @@ export default function UsersPage() {
           columns={columns}
           dataSource={rows}
           loading={isLoading}
-          scroll={{ x: 1100 }}
+          scroll={{ x: 1700 }}
           pagination={{
             current: page,
             pageSize: limit,

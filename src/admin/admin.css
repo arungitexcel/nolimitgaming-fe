@@ -125,3 +125,58 @@
   font-variant-numeric: tabular-nums;
 }
 
+.AdminPromoForm {
+  padding: 8px 0 4px;
+}
+
+.AdminPromoFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+}
+
+.AdminPromoFormActions {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .AdminPromoFormGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.AdminPredictionFilterGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 12px;
+}
+
+.AdminPredictionStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 1200px) {
+  .AdminPredictionFilterGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .AdminPredictionStatsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .AdminPredictionFilterGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .AdminPredictionStatsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+

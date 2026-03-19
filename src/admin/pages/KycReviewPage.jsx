@@ -188,7 +188,7 @@ export default function KycReviewPage() {
   const { manager } = useManagerAuth();
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("pending_review");
+  const [status, setStatus] = useState("all");
   const [search, setSearch] = useState("");
   const [rejectModal, setRejectModal] = useState({ open: false, kycId: null, reason: "" });
   const [busyById, setBusyById] = useState({});
@@ -206,7 +206,9 @@ export default function KycReviewPage() {
   const load = async () => {
     setLoading(true);
     try {
-      const list = await fetchManagerKycList({ status: status || undefined });
+      const list = await fetchManagerKycList({
+        status: status === "all" ? undefined : status,
+      });
       setRows(list);
 
       // Hydrate username/email by userId (best-effort)
@@ -455,7 +457,7 @@ export default function KycReviewPage() {
                 { value: "pending_review", label: "Pending Review" },
                 { value: "approved", label: "Approved" },
                 { value: "rejected", label: "Rejected" },
-                { value: "", label: "All" },
+                { value: "all", label: "All" },
               ]}
               aria-label="Filter by status"
             />
